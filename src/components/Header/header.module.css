@@ -17,6 +17,7 @@
   padding: 0 5px;
   height: 77px;
   position: fixed;
+  opacity: 0.9;
 }
 
 .left_header{
@@ -71,6 +72,7 @@
   top: 70px; 
   bottom: 0;
   border-radius: 50%;
+  opacity: 0.9;
 }
 
 
