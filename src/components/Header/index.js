@@ -42,7 +42,7 @@ const Header = () => {
             <Hamburger
               size={20}
               direction="right"
-              duration={0.8}
+              duration={0.7}
               distance="lg"
               color="#fff" 
             />

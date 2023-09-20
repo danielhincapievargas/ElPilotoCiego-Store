@@ -29,7 +29,8 @@
 .left_header .user_icon{
   cursor: pointer;
   min-width: 30px;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
+  margin-left: 10px;
   transition: color 0.4s ease;
 }
 
@@ -107,6 +108,11 @@
     color: #e72076;
   }
 
+  .right_header {
+    justify-content: space-between;
+  }
+
+
   .right_header ul {
     display: flex;
     font-size: 18px;
@@ -122,8 +128,8 @@
     color: #e72076;
   }
 
-  .right_header {
-    justify-content: space-between;
+  .left_header .user_icon{
+    margin-bottom: 0;
   }
 
   .right_header .hamburger{
