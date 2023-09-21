@@ -32,3 +32,15 @@ ul {
   padding: 0;
   margin: 0;
 }
+
+input {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+}
