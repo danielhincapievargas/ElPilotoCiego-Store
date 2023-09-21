@@ -97,14 +97,6 @@
 
 @media screen and (min-width: 768px) {
 
-  .footer_container{
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    padding: 0 20px;
-  }
-
   .footer_section{
     display: block;
   }
