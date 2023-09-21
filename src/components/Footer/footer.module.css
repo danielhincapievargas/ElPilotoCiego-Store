@@ -1,11 +1,27 @@
+
 .footer_container{
   left: 0;
   bottom: 0;
   width: 100%;
+  padding: 0 20px;
+}
+
+.footer{
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 20px;
+}
+
+.footer_left{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer_right{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .footer_logo, .footer_section{
@@ -21,7 +37,118 @@
 }
 
 .footer_section ul li {
+  letter-spacing: 1px;
   cursor: pointer;
   margin-bottom: 5px;
+  text-align: left;
+}
+
+.footer_newsletter{
+  letter-spacing: 1px;
   text-align: center;
+  margin-bottom: 50px;
+}
+
+.footer_newsletter h5{
+  font-weight: 300;
+  font-size: 18px;
+  margin-top: 20px;
+  letter-spacing: 2px;
+}
+
+.footer_newsletter p{
+  margin-top: 12px;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.footer_newsletter .email_container{
+  position: relative;
+}
+
+.email_container input{
+  width: 100%;
+  padding-bottom: 10px;
+  border-bottom: 1px solid white;
+  margin-top: 12px;
+  font-size: 20px;
+}
+.email_container input::placeholder{
+  letter-spacing: 2px;
+  color: white;
+  opacity: 0.8;
+}
+
+.email_container .email_icon{
+  position: absolute;
+  top: 15px;
+  right: 5px;
+  font-size: 28px;
+}
+
+.made_by{
+  width: 100%;
+  text-align: center;
+  letter-spacing: 2px;
+  font-size: 12px;
+  font-weight: 100;
+  margin-bottom: 20px;
+}
+
+@media screen and (min-width: 768px) {
+
+  .footer_container{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 0 20px;
+  }
+
+  .footer_section{
+    display: block;
+  }
+
+  .footer_left, .footer_right{
+    flex-direction: row;
+  }
+  .footer_right{
+    justify-content: space-between;
+  }
+
+  .footer_right .footer_section{
+    width: 20%;
+    margin-left: 5vw;
+  }
+  .footer_right .footer_newsletter{
+    width: 60%;
+    margin-right: 5vw;
+  }
+
+  .footer_logo, .footer_section{
+    border-bottom: none;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .footer{
+    flex-direction: row;
+  }
+  .footer_left{
+    width: 100%;
+  }
+
+  .footer_logo{
+    margin-right: 28px;
+  }
+
+  .footer_right .footer_section{
+    padding-top: 32px;
+    margin-left: 0;
+  }
+
+  .footer_newsletter p{
+    text-align: center;
+    margin-right: 0;
+  }
 }
