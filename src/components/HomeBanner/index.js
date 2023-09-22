@@ -5,10 +5,10 @@ import BannerCarousel from '../BannerCarousel'
 const HomeBanner = () => {
   return (
     <div className={styles.banner_container}>
-      <h2>NEW LP</h2>
+      <h2>NEW LP OUT NOW!</h2>
       <BannerCarousel />
-      <h3>cuatro años sin torre de control</h3>
-
+      <h3>Cuatro Años Sin Torre de Control</h3>
+      <p>all the tracks from 2019 to 2022</p>
     </div>
   )
 }

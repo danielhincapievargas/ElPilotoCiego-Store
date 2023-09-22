@@ -22,8 +22,9 @@ const BannerCarousel = () => {
     return (
       <div className={styles.slider_container}>
         <Slider {...settings}>
-          <div className={styles.front_cover}>
-            <Image 
+          <div className={styles.single_slide}>
+            <Image
+              className={styles.slide_img}
               src="/epc-1frontcover.jpg"
               alt="front cover"
               width={375}
@@ -31,8 +32,9 @@ const BannerCarousel = () => {
               priority
             />
           </div>
-          <div className={styles.front_cover}>
-            <Image 
+          <div className={styles.single_slide}>
+            <Image
+              className={styles.slide_img}
               src="/epc-mock_page1.jpg"
               alt="front cover"
               width={375}
@@ -40,8 +42,9 @@ const BannerCarousel = () => {
               priority
             />
           </div>
-          <div className={styles.front_cover}>
-            <Image 
+          <div className={styles.single_slide}>
+            <Image
+              className={styles.slide_img}
               src="/epc-mock_page2.jpg"
               alt="front cover"
               width={375}
@@ -49,8 +52,9 @@ const BannerCarousel = () => {
               priority
             />
           </div>
-          <div className={styles.front_cover}>
-            <Image 
+          <div className={styles.lp_cover}>
+            <Image
+              className={styles.slide_img}
               src="/epc-xbackcover.jpg"
               alt="front cover"
               width={375}

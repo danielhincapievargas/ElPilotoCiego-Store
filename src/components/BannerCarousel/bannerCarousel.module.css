@@ -3,6 +3,16 @@
   width: 375px;
 }
 
-.front_cover{
+.single_slide{
   width: 100%;
+}
+
+@media screen and (min-width: 900px) {
+  .slider_container {
+    width: 500px;
+  }
+  .slide_img{
+    width: 500px;
+    height: 500px;
+  }
 }

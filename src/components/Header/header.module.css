@@ -7,6 +7,7 @@
   margin-bottom: 100px;
   background-color: black;
   color: white;
+  z-index: 99;
 }
 .header{
   margin: 0 auto;
@@ -19,6 +20,7 @@
   position: fixed;
   background-color: black;
   opacity: 0.9;
+  z-index: 99;
 }
 
 .left_header{
@@ -74,6 +76,7 @@
   bottom: 0;
   border-radius: 50%;
   opacity: 0.9;
+  z-index: 99;
 }
 
 
