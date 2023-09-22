@@ -20,6 +20,7 @@ const BannerCarousel = () => {
     arrows: false,
   }
     return (
+      <div className={styles.slider_container}>
         <Slider {...settings}>
           <div className={styles.front_cover}>
             <Image 
@@ -48,22 +49,17 @@ const BannerCarousel = () => {
               priority
             />
           </div>
-          {/* <div>
-            <h3>2</h3>
+          <div className={styles.front_cover}>
+            <Image 
+              src="/epc-xbackcover.jpg"
+              alt="front cover"
+              width={375}
+              height={375}
+              priority
+            />
           </div>
-          <div>
-            <h3>3</h3>
-          </div>
-          <div>
-            <h3>4</h3>
-          </div>
-          <div>
-            <h3>5</h3>
-          </div>
-          <div>
-            <h3>6</h3>
-          </div> */}
         </Slider>
+      </div>
     );
 }
 

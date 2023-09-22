@@ -4,9 +4,11 @@ import BannerCarousel from '../BannerCarousel'
 
 const HomeBanner = () => {
   return (
-    <div>
-      <h2>New LP</h2>
+    <div className={styles.banner_container}>
+      <h2>NEW LP</h2>
       <BannerCarousel />
+      <h3>cuatro años sin torre de control</h3>
+
     </div>
   )
 }

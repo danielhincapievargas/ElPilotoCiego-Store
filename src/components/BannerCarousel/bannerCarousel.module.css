@@ -1,8 +1,6 @@
-.carousel_container {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-  margin-bottom: 100px;
+.slider_container {
+  margin: 0 auto;
+  width: 375px;
 }
 
 .front_cover{
