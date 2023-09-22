@@ -1,0 +1,26 @@
+
+.banner_container{
+  margin-top: 150px;
+}
+.banner_container h2{
+  text-align: center;
+  font-style: italic;
+  font-weight: 200;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.banner_container h3{
+  text-align: center;
+  font-size: 24px;
+  font-weight: 300;
+  letter-spacing: 3px;
+  font-style: italic;
+  margin-top: 0px;
+}
+.banner_container p{
+  text-align: center;
+  font-weight: 200;
+  letter-spacing: 2px;
+
+}

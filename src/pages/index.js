@@ -1,4 +1,5 @@
 import React from 'react'
+import HomeBanner from '@/components/HomeBanner'
 
 import Layout from '@/components/Layout'
 
@@ -6,7 +7,7 @@ const Home = () => {
   return (
     <>
       <Layout>
-        <di>Content</di>
+        <HomeBanner />
       </Layout>
     </>
   )
