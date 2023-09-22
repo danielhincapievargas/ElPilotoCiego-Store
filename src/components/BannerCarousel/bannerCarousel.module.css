@@ -1,0 +1,10 @@
+.carousel_container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 100px;
+}
+
+.front_cover{
+  width: 100%;
+}
