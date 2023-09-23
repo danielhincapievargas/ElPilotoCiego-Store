@@ -1,5 +1,6 @@
 import React from 'react'
 import HomeBanner from '@/components/HomeBanner'
+import FeaturedItems from '@/components/FeaturedItems'
 
 import Layout from '@/components/Layout'
 
@@ -8,6 +9,7 @@ const Home = () => {
     <>
       <Layout>
         <HomeBanner />
+        <FeaturedItems/>
       </Layout>
     </>
   )
