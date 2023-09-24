@@ -1,0 +1,103 @@
+.product_detail{
+  margin-top: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 100px;
+}
+
+.product_tags{
+  border-bottom: 1px solid white;
+  padding: 20px 0;
+}
+
+.product_tags .product_name{
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.product_tags .product_price{
+  text-align: center;
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+
+.sizes_container{
+  width: 100%;
+  max-width: 375px;
+  margin-top: 20px;
+  padding: 0 30px;
+}
+
+.sizes_title {
+  text-align: center;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.sizes_list{
+  display: flex;
+  justify-content: space-around;
+
+}
+
+.sizes_list li{
+  cursor: pointer;
+  border: 1px solid white;
+  padding: 5px 15px;
+}
+
+.quantity_container{
+  margin-top: 20px;
+}
+
+.quantity_title{
+  text-align: center;
+  font-weight: 300;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.quantity_counter{
+  margin: 0 auto;
+  width: 80px;
+  display: flex;
+  justify-content: center;
+  border: 1px solid white;
+}
+
+.quantity_counter button{
+  cursor: pointer;
+}
+
+.quantity_counter button, .quantity_counter .count{
+  font-size: 20px;
+  padding: 0 8px;
+}
+
+.add_to_cart{
+  width: 100%;
+  padding: 0 10%;
+  margin: 20px auto;
+}
+
+.add_button{
+  cursor: pointer;
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+  border: 1px solid white;
+}
+
+@media screen and (min-width: 768px) {
+  .product_detail{
+    margin-top: 150px;
+    flex-direction: row;
+  }
+
+  .product_img{
+    margin-right: 40px;
+  }
+}
