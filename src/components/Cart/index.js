@@ -41,6 +41,30 @@ const Cart = () => {
             </td>
             <td className={styles.product_total}>{'$30.00'}</td>
           </tr>
+          <tr>
+            <td>
+              <CartProduct />
+            </td>
+            <td className={styles.product_price}>
+              <div className={styles.product_price_value}>{'$30.00'}</div>
+              <div className={styles.price_qty}>
+                <div className={styles.qty}>QTY</div>
+                <div className={styles.price_counter} >
+                  <button>-</button>
+                  <div className={styles.count}>1</div>
+                  <button>+</button>
+                </div>
+              </div>
+            </td>
+            <td className={styles.product_quantity}>
+              <div className={styles.counter}>
+                <button>-</button>
+                <div className={styles.count}>1</div>
+                <button>+</button>
+              </div>
+            </td>
+            <td className={styles.product_total}>{'$30.00'}</td>
+          </tr>
         </tbody>
       </table>
       <div className={styles.subtotal}>
