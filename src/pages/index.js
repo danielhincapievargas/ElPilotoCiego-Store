@@ -1,6 +1,6 @@
 import React from 'react'
 import HomeBanner from '@/components/HomeBanner'
-import FeaturedItems from '@/components/FeaturedItems'
+import ProductList from '@/components/ProductList'
 
 import Layout from '@/components/Layout'
 
@@ -9,7 +9,7 @@ const Home = () => {
     <>
       <Layout>
         <HomeBanner />
-        <FeaturedItems/>
+        <ProductList title={'FEATURED ITEMS'}/>
       </Layout>
     </>
   )

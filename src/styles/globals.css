@@ -33,14 +33,19 @@ ul {
   margin: 0;
 }
 
+label{
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
 input {
-  border: none;
+  border: 1px solid white;
   outline: none;
   background: transparent;
   font-family: inherit;
-  font-size: inherit;
+  font-size: 18px;
   color: inherit;
-  padding: 0;
+  padding: 5px 10px 8px 10px;
   margin: 0;
   box-shadow: none;
 }

@@ -1,12 +1,12 @@
 import React from 'react'
-import styles from '@components/FeaturedItems/featuredItems.module.css'
+import styles from '@components/ProductList/productList.module.css'
 import Image from 'next/image'
 import mockData from '../../services/mockData'
 
-const FeaturedItems = () => {
+const ProductList = ({title}) => {
   return (
     <div className={styles.featured_items}>
-      <h2>FEATURED ITEMS</h2>
+      <h2>{title}</h2>
       <div className={styles.items_list}>
         {
           mockData.map((item) => {
@@ -31,4 +31,4 @@ const FeaturedItems = () => {
   )
 }
 
-export default FeaturedItems
+export default ProductList
