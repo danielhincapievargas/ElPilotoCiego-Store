@@ -1,0 +1,44 @@
+
+.header_container{
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 50px;
+  margin-bottom: 100px;
+  background-color: black;
+  color: white;
+  z-index: 99;
+  
+}
+.header{
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 10%;
+  height: 150px;
+  position: fixed;
+  background-color: black;
+  opacity: 0.9;
+  z-index: 99;
+  border-bottom: 1px solid white;
+}
+
+.header .logo_checkout{
+  cursor: pointer;
+}
+
+.header .cart_icon{
+  font-size: 30px;
+  margin-right: 5px;
+  cursor: pointer;
+  min-width: 30px;
+  transition: color 0.4s ease;
+}
+
+.header .cart_icon:hover{
+  color: #e72076;
+}

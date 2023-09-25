@@ -1,0 +1,65 @@
+.delivery_form{
+  display: flex;
+  flex-direction: column;
+  margin: 30px auto;
+  padding: 0 20px;
+  width: 100%;
+  max-width: 500px;
+}
+.delivery_form .contact, .delivery_form .delivery {
+  font-size: 30px;
+  text-align: left;
+  margin-bottom: 20px;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+.have_account {
+  font-weight: 300;
+  letter-spacing: 2px;
+}
+.have_account span{
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-skip-ink: auto;
+  text-underline-offset: 5px;
+}
+
+.groups{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.group{
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+}
+
+.groups .group input{
+  width: 100%;
+}
+
+.form_group{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.create_account_button{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+.create_button{
+  margin-top: 30px;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid white;
+  padding: 5px 100px;
+  font-size: 20px;
+  letter-spacing: 2px;
+}
