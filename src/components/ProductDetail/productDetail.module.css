@@ -43,10 +43,25 @@
 
 }
 
-.sizes_list li{
+.sizes_list li button{
   cursor: pointer;
   border: 1px solid white;
   padding: 5px 15px;
+}
+
+.sizes_list li .selected_size{
+  background-color: white;
+  color: black;
+}
+
+.disabled{
+  opacity: 0.1;
+}
+.choose_size{
+  text-align: center;
+  font-weight: 200;
+  letter-spacing: 2px;
+  color: #e72076;
 }
 
 .quantity_container{
