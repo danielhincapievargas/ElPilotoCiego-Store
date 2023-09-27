@@ -54,6 +54,10 @@
   color: black;
 }
 
+.disabled{
+  opacity: 0.1;
+}
+
 .quantity_container{
   margin-top: 20px;
 }
