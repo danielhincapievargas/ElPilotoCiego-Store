@@ -12,7 +12,7 @@ const ProductList = ({title}) => {
   const dispatch = useDispatch()
   const router = useRouter()
   const selectedItem = useSelector(selectedProduct)
-  console.log('selectedItem', selectedItem.productName);
+  //console.log('selectedItem', selectedItem.productImg);
 
   const handleSelect = (item) => {
     dispatch(selectProduct(item))
@@ -25,10 +25,14 @@ const ProductList = ({title}) => {
         {
           mockData.map((item) => {
             return (
-              <div onClick={() => {handleSelect(item); router.push('/product_detail')}} key={item.id} className={styles.product_card}>
+              <div 
+                onClick={() => {handleSelect(item); router.push('/product_detail')}}
+                key={item.id}
+                className={styles.product_card}
+              >
                 <Image
                   className={styles.product_img}
-                  src={item.productImg}
+                  src={item.productImage}
                   alt={item.productName}
                   width={162}
                   height={162}

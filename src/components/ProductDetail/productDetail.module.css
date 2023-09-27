@@ -43,10 +43,15 @@
 
 }
 
-.sizes_list li{
+.sizes_list li button{
   cursor: pointer;
   border: 1px solid white;
   padding: 5px 15px;
+}
+
+.sizes_list li .selected_size{
+  background-color: white;
+  color: black;
 }
 
 .quantity_container{

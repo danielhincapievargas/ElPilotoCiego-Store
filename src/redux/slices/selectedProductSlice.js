@@ -6,8 +6,9 @@ const initialState = {
   productImage: '',
   productPrice: '',
   productStock: 0,
-  productDescription: '',
-  productType: ''
+  productType: '',
+  productSize: '',
+  productCount: 1,
 }
 
 const selectedProductSlice = createSlice({
@@ -15,19 +16,34 @@ const selectedProductSlice = createSlice({
   initialState,
   reducers:{
     selectProduct: (state, { payload }) => {
-      state.id = payload.id;
-      state.productName = payload.productName;
-      state.productImage = payload.productImage;
-      state.productPrice = payload.productPrice;
-      state.productStock = payload.productStock;
-      state.productDescription = payload.productDescription;
-      state.productType = payload.productType;
-    }
+      return {
+        ...state,
+        ...payload,
+      }
+    },
+    updateProductSize: (state, { payload }) => {
+      const { productSize } = payload;
+      return {
+        ...state,
+        productSize,
+      };
+    },
+    incrementCount: (state) => {
+        state.productCount += 1
+    },
+    decrementCount: (state) => {
+        state.productCount -= 1
+    },
   }
 })
 
 
-export const { selectProduct } = selectedProductSlice.actions
+export const { 
+  selectProduct, 
+  updateProductSize,
+  incrementCount,
+  decrementCount
+} = selectedProductSlice.actions
 
 export const selectedProduct = state => state.selectedProduct
 
