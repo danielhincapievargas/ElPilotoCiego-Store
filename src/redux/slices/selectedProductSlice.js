@@ -28,6 +28,13 @@ const selectedProductSlice = createSlice({
         productSize,
       };
     },
+    updateProductCount: (state, { payload }) => {
+      const { productCount } = payload;
+      return {
+        ...state,
+        productCount,
+      };
+    },
     incrementCount: (state) => {
         state.productCount += 1
     },
@@ -41,6 +48,7 @@ const selectedProductSlice = createSlice({
 export const { 
   selectProduct, 
   updateProductSize,
+  updateProductCount,
   incrementCount,
   decrementCount
 } = selectedProductSlice.actions

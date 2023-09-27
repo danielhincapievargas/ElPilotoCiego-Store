@@ -57,6 +57,12 @@
 .disabled{
   opacity: 0.1;
 }
+.choose_size{
+  text-align: center;
+  font-weight: 200;
+  letter-spacing: 2px;
+  color: #e72076;
+}
 
 .quantity_container{
   margin-top: 20px;

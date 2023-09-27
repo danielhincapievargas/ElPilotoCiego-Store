@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from '@components/ProductDetail/productDetail.module.css'
 import Image from 'next/image'
 import { useSelector, useDispatch } from 'react-redux'
@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 import { 
   selectedProduct,
   updateProductSize,
+  updateProductCount,
   incrementCount,
   decrementCount
 } from '@/redux/slices/selectedProductSlice'
@@ -16,26 +17,75 @@ const ProductDetail = () => {
   const router = useRouter()
   const [disableSubstract, setDisableSubstract] = useState(false);
   const [disableAdd, setDisableAdd] = useState(false);
+  const [chooseSize, setChooseSize] = useState(false)
   const [selectedSize, setSelectedSize] = useState('');
 
-  const handleAdd = () => {
+  useEffect(() => {
+    dispatch(updateProductCount({productCount: 1}));
+  }, [dispatch]);
 
+
+  const handleAdd = () => {
+    if(selectedSize === '' 
+    &&
+    (selectedItem.productType === 'Tee' || selectedItem.productType === 'Hoodie')
+    ){
+      setChooseSize(true)
+      setDisableAdd(true);
+      return
+    }
+
+    if(
+      (selectedItem.productStock === selectedItem.productCount)
+      ||(selectedSize === 'S' && (selectedItem.productStockS === selectedItem.productCount))
+      ||(selectedSize === 'M' && (selectedItem.productStockM === selectedItem.productCount))
+      ||(selectedSize === 'L' && (selectedItem.productStockL === selectedItem.productCount))
+      ||(selectedSize === 'XL' && (selectedItem.productStockXL === selectedItem.productCount))
+      ){
+      setDisableAdd(true);
+      return
+    }
+
+    setDisableAdd(false)
     setDisableSubstract(false)
     dispatch(incrementCount())
   }
 
   const handleSubstract = () => {
+    if(selectedSize === ''
+    &&
+    (selectedItem.productType === 'Tee' || selectedItem.productType === 'Hoodie')
+    ){
+      setChooseSize(true)
+      setDisableSubstract(true);
+      return
+    }
+
     if(selectedItem.productCount <= 1){
       setDisableSubstract(true);
       return;
     } else {
+      setDisableAdd(false)
       dispatch(decrementCount())
     }
   }
 
   const handleSize = (e) => {
+    setDisableAdd(false)
+    setChooseSize(false)
+    dispatch(updateProductCount({productCount: 1}))
     dispatch(updateProductSize({ productSize: e.target.value}))
     setSelectedSize(e.target.value)
+  }
+
+  const handleAddToCart = () => {
+    if((selectedItem.productType === 'Tee' || selectedItem.productType === 'Hoodie') && !selectedSize ){
+      setChooseSize(true);
+      return
+    } else {
+      router.push('/cart')
+    }
+
   }
 
   console.log(selectedItem);
@@ -127,14 +177,16 @@ const ProductDetail = () => {
           <div className={styles.quantity_counter}>
             <button disabled={disableSubstract} onClick={handleSubstract}>-</button>
             <div className={styles.count}>{selectedItem.productCount}</div>
-            <button onClick={handleAdd}>+</button>
+            <button disabled={disableAdd} onClick={handleAdd}>+</button>
           </div>
         </div>
+
+        {chooseSize && (<p className={styles.choose_size}>choose a size</p>)}
 
         <div className={styles.add_to_cart}>
           <button 
             className={styles.add_button}
-            onClick={() => {router.push('/cart')}}
+            onClick={handleAddToCart}
           >
             ADD TO CART
           </button>
