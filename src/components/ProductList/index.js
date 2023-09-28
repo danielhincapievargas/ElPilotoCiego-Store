@@ -12,7 +12,7 @@ const ProductList = ({title}) => {
   const dispatch = useDispatch()
   const router = useRouter()
   const selectedItem = useSelector(selectedProduct)
-  //console.log('selectedItem', selectedItem.productImg);
+
 
   const handleSelect = (item) => {
     dispatch(selectProduct(item))
