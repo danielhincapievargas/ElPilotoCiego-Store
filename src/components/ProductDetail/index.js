@@ -10,9 +10,11 @@ import {
   incrementCount,
   decrementCount
 } from '@/redux/slices/selectedProductSlice'
+import { addToCart, cart } from '@/redux/slices/cartSlice'
 
 const ProductDetail = () => {
-  const selectedItem = useSelector(selectedProduct);
+  const currentCart = useSelector(cart)
+  const selectedItem = useSelector(selectedProduct);;
   const dispatch = useDispatch();
   const router = useRouter()
   const [disableSubstract, setDisableSubstract] = useState(false);
@@ -82,13 +84,16 @@ const ProductDetail = () => {
     if((selectedItem.productType === 'Tee' || selectedItem.productType === 'Hoodie') && !selectedSize ){
       setChooseSize(true);
       return
-    } else {
-      router.push('/cart')
     }
+      console.log(selectedItem);
+      dispatch(addToCart(selectedItem))
+      //router.push('/cart')
+      
+    }
+    console.log(currentCart);
 
-  }
 
-  console.log(selectedItem);
+
 
   return (
     <div className={styles.product_detail}>
@@ -186,7 +191,7 @@ const ProductDetail = () => {
         <div className={styles.add_to_cart}>
           <button 
             className={styles.add_button}
-            onClick={handleAddToCart}
+            onClick={() => handleAddToCart()}
           >
             ADD TO CART
           </button>
