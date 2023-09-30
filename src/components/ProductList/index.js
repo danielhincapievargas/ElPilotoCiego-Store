@@ -19,7 +19,7 @@ const ProductList = ({title}) => {
     dispatch(listProducts(mockData))
   },[])
 
-  console.log(productList.products);
+  console.log(productList);
 
   const handleSelect = (item) => {
     dispatch(selectProduct(item))
