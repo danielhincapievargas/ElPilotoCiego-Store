@@ -19,14 +19,6 @@ const OrderSummary = () => {
           <div>{'$30.00'}</div>
         </div>
       </div>
-{/*       <div className={styles.order_subtotal}>
-        <div className={styles.subtotal_title}>Subtotal</div>
-        <div>{'$60.00'}</div>
-      </div> */}
-{/*       <div className={styles.order_shipping}>
-        <div className={styles.shipping_title}>Shipping</div>
-        <div>Enter shipping address</div>
-      </div> */}
       <div className={styles.order_total}>
         <div className={styles.total_title}>Total</div>
         <div>{'$60.00'}</div>

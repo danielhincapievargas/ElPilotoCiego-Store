@@ -1,0 +1,85 @@
+.orders_container{
+  width: 100%;
+  margin: 120px auto;
+  max-width: 1000px;
+  padding: 0 50px;
+}
+.orders_container h2{
+  text-align: center;
+  margin-bottom: 50px;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+
+.orders_table{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.orders_table thead th{
+  border-bottom: 1px solid white;
+  padding-bottom: 20px;
+  text-align: left;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.orders_table tbody td{
+  border-bottom: 1px solid white;
+  text-align: left;
+  padding: 20px 0;
+}
+
+
+.orders_table thead tr .name_title{
+  text-align: right;
+}
+
+.th_order_date,
+.th_order_status,
+.td_order_date,
+.td_order_status
+{
+  display: none;
+}
+
+.td_order_id,
+.td_order_email,
+.td_order_date,
+.td_order_status{
+  font-weight: 300;
+}
+
+.td_order_id{
+  font-size: 11px;
+}
+.td_order_detail{
+  cursor: pointer;
+  transition: color 0.4s ease;
+}
+.td_order_detail:hover{
+  color: #e72076;
+}
+
+@media screen and (min-width: 600px){
+
+  .orders_table thead tr .name_title{
+    text-align: left;
+  }
+
+  .td_order_id{
+    font-size: 14px;
+  }
+  
+
+
+  .th_order_date,
+  .th_order_status,
+  .td_order_date,
+  .td_order_status
+  {
+    display:table-cell;
+  }
+
+}
