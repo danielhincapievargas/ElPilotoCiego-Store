@@ -2,11 +2,13 @@ import React from 'react'
 import styles from '@components/Login/login.module.css'
 import { changeForm, form } from '@/redux/slices/formSlice'
 import { useDispatch, useSelector } from 'react-redux'
+import { useRouter } from 'next/router'
 
 const url = 'http://localhost:8080/auth/local/login'
 
 const Login = () => {
   const dispatch = useDispatch()
+  const router = useRouter()
   const currentForm = useSelector(form)
   const {userEmail, userPassword} = currentForm.form
 
@@ -42,7 +44,7 @@ const Login = () => {
   return (
     <div className={styles.login}>
       <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={(e) => {handleSubmit(e); router.push('/')}}>
         <div className={styles.form_group}>
           <label htmlFor="email">EMAIL</label>
           <input
