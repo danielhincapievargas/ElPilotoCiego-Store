@@ -1,0 +1,126 @@
+.product_container{
+  width: 100%;
+  margin: 120px auto;
+  max-width: 1000px;
+  padding: 0 50px;
+}
+.product_container h2{
+  text-align: center;
+  margin-bottom: 50px;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+.add_product {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 2px;
+}
+.add_button{
+  cursor: pointer;
+  border: solid 1px white;
+  padding: 5px 10px;
+  transition: all 0.5s ease;
+}
+
+.add_button:hover{
+  background-color: white;
+  color: black;
+}
+
+.product_table{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.product_table thead th{
+  border-bottom: 1px solid white;
+  padding-bottom: 20px;
+  text-align: left;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.product_table tbody td{
+  border-bottom: 1px solid white;
+  text-align: left;
+  padding: 20px 0;
+}
+
+.product_name{
+  text-align: right;
+}
+
+.stock_mobile{
+  margin-top: 5px;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+.product_stock_mobile{
+  padding: 5px 10px;
+  margin-left: 10px;
+  border: 1px solid white;
+}
+
+.actions_mobile{
+  margin-top: 5px;
+  text-align: right;
+}
+
+.edit_product, .delete_product{
+  cursor: pointer;
+  transition: color 0.4s ease;
+}
+.edit_product:hover, .delete_product:hover{
+  color: #e72076;
+}
+
+.product_table thead tr .name_title{
+  text-align: right;
+}
+
+.price_title,
+.stock_title,
+.action_title,
+.product_stock,
+.product_price,
+.actions
+{
+  display: none;
+}
+
+@media screen and (min-width: 600px){
+
+  .product_table thead tr .name_title{
+    text-align: left;
+  }
+
+  .product_name{
+    text-align: left;
+  }
+
+  .price_title,
+  .stock_title,
+  .action_title,
+  .product_stock,
+  .product_price,
+  .actions
+  {
+    display:table-cell;
+  }
+
+  .product_stock{
+    padding: 5px 10px;
+    margin-left: 10px;
+    border: 1px solid white;
+  }
+
+  .product_stock_mobile, .actions_mobile, .stock{
+    display: none;
+  }
+}

@@ -1,0 +1,99 @@
+.users_container{
+  width: 100%;
+  margin: 120px auto;
+  max-width: 1000px;
+  padding: 0 50px;
+}
+.users_container h2{
+  text-align: center;
+  margin-bottom: 50px;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+
+.users_table{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.users_table thead th{
+  border-bottom: 1px solid white;
+  padding-bottom: 20px;
+  text-align: left;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+table thead tr .th_user_email{
+  text-align: center;
+}
+
+.users_table tbody td{
+  border-bottom: 1px solid white;
+  text-align: left;
+  padding: 20px 0;
+}
+
+
+.td_user_email{
+  font-size: 14px;
+}
+
+.th_user_orders, .td_user_orders{
+  display: none;
+}
+
+
+.td_user_name,
+.td_user_email_container,
+.td_user_orders,
+.td_user_status{
+  font-weight: 300;
+}
+
+.td_user_email_container p{
+  text-align: center;
+  margin-top: 5px;
+}
+
+.td_user_email_container .td_user_email{
+  text-align: center;
+}
+
+.td_user_orders{
+  cursor: pointer;
+  transition: color 0.4s ease;
+}
+.td_user_orders:hover{
+  color: #e72076;
+}
+
+.see_orders{
+  text-align: center;
+}
+
+@media screen and (min-width: 600px){
+
+  .th_user_orders, .td_user_orders{
+    text-align: left;
+    display: table-cell;
+  }
+
+  table thead tr .th_user_email{
+    text-align: left;
+  }
+
+  .see_orders{
+    text-align: left;
+  }
+
+  .td_user_email_container p{
+    display: none;
+  }
+  
+  .td_user_email_container .td_user_email{
+    text-align: left;
+  }
+ 
+}
