@@ -74,7 +74,7 @@ const Login = () => {
           <button type="submit" className={styles.sign_in_button}>Sign In</button>
         </div>
       </form>
-      <div className={styles.create_account}>Create account</div>
+      <div className={styles.create_account} onClick={(e) => {handleSubmit(e); router.push('/create_account')}}>Create account</div>
     </div>
   )
 }

@@ -39,3 +39,11 @@
   font-size: 20px;
   letter-spacing: 2px;
 }
+
+.create_account{
+  cursor: pointer;
+  transition: color 0.4s ease;
+}
+.create_account:hover{
+  color: #e72076;
+}

@@ -25,6 +25,7 @@
 
 .left_header{
   display: flex;
+  align-items: flex-end;
   justify-content: space-between;
   width: 40%;
   font-size: 30px;
@@ -80,10 +81,46 @@
 }
 
 
+
 @media screen and (min-width: 500px) {
   .header{
     padding: 0 20px;
   }
+
+  .login_container{
+    position: relative;
+    display: flex;
+  }
+
+  .logged_card{
+    display: none;
+    opacity: 0;
+    left: 10px;
+    top: 29px;
+    position: absolute;
+    border: 1px solid white;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .login_container:hover .logged_card{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    opacity: 1;
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    padding: 10px 5px;
+    transition-delay: 1s;
+  }
+
+  .logged_list_tag{
+    cursor: pointer;
+  }
+  .logged_list_tag:hover{
+    color: #e72076;
+  }
+  
 }
 
 @media screen and (min-width: 840px) {
