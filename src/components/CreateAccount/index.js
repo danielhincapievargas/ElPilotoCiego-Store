@@ -2,10 +2,12 @@ import React from 'react'
 import styles from '@components/CreateAccount/createAccount.module.css'
 import { changeForm, form } from '@/redux/slices/formSlice'
 import { useDispatch, useSelector } from 'react-redux'
+import { useRouter } from 'next/router'
 
 const url = 'http://localhost:8080/api/users'
 
 const CreateAccount = () => {
+  const router = useRouter()
   const dispatch = useDispatch()
   const currentForm = useSelector(form)
   const {
@@ -47,7 +49,7 @@ const CreateAccount = () => {
   return (
     <div className={styles.create_account}>
       <h2>CREATE ACCOUNT</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={(e) => {handleSubmit(e); router.push('/login')}}>
         <div className={styles.form_group}>
           <label htmlFor="userFirstName">FIRST NAME</label>
           <input

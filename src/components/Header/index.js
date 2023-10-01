@@ -4,8 +4,10 @@ import Image from 'next/image'
 import { FaRegUserCircle } from 'react-icons/fa'
 import { HiOutlineShoppingBag } from "react-icons/hi2"
 import { Spin as Hamburger } from 'hamburger-react'
+import { useRouter } from 'next/router'
 
 const Header = () => {
+  const router = useRouter()
   return (
 
     <div className={styles.header_container}>
@@ -15,29 +17,30 @@ const Header = () => {
 
           <FaRegUserCircle className={styles.user_icon}/>
           <ul>
-            <li>APPAREL</li>
-            <li>ACCESORIES</li>
+            <li onClick={() => router.push('/apparel')}>APPAREL</li>
+            <li onClick={() =>router.push('/accesories')}>ACCESORIES</li>
           </ul>
 
         </div>
 
         <div className={styles.middle_block}>|</div>
-        <Image 
-        className={styles.logo}
-        src="/elpiloto-logo.png"
-        alt="El Piloto Ciego Logo"
-        width={200}
-        height={200}
-        priority
+        <Image
+          onClick={() =>router.push('/')} 
+          className={styles.logo}
+          src="/elpiloto-logo.png"
+          alt="El Piloto Ciego Logo"
+          width={200}
+          height={200}
+          priority
         />
 
         <div className={styles.right_header}>
 
           <ul>
-            <li>MUSIC</li>
+            <li onClick={() =>router.push('/music')}>MUSIC</li>
             <li>ABOUT</li>
           </ul>
-          <HiOutlineShoppingBag className={styles.cart_icon} />
+          <HiOutlineShoppingBag onClick={() =>router.push('/cart')} className={styles.cart_icon} />
           <div className={styles.hamburger}>
             <Hamburger
               size={20}
