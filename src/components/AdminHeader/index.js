@@ -25,6 +25,7 @@ const AdminHeader = () => {
       <div className={styles.middle_block}>|</div>
       <Image
         className={styles.logo}
+        onClick={() => router.push('/')}
         src="/elpiloto-logo.png"
         alt="El Piloto Ciego Logo"
         width={200}
@@ -38,7 +39,7 @@ const AdminHeader = () => {
           <li onClick={() =>router.push('/admin/users')}>USERS</li>
           <li onClick={() =>router.push('/admin/newsletter')}>NEWSLETTER</li>
         </ul>
-        <HiOutlineShoppingBag onClick={() =>router.push('/cart')} className={styles.cart_icon} />
+        <div className={styles.admin}>ADMIN</div>
         <div className={styles.hamburger}>
           <Hamburger
             size={20}
