@@ -2,27 +2,25 @@ import React, { useEffect } from 'react'
 import styles from '@components/ProductList/productList.module.css'
 import Image from 'next/image'
 import mockData from '../../services/mockData'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { selectedProduct } from '@/redux/slices/selectedProductSlice'
 import { selectProduct } from '@/redux/slices/selectedProductSlice'
-import { listProducts, products } from '@/redux/slices/productSlice'
-import { useDispatch } from 'react-redux'
+import { stateProducts } from '@/redux/slices/productSlice'
 import { useRouter } from 'next/router'
 
-const ProductList = ({title}) => {
-  const dispatch = useDispatch()
+
+const ProductList = ({ title }) => {
+  //const dispatch = useDispatch()
   const router = useRouter()
-  const selectedItem = useSelector(selectedProduct)
-  const productList = useSelector(products)
+  //const selectedItem = useSelector(selectedProduct)
+  const { products } = useSelector(stateProducts)
 
-  useEffect(() => {
-    dispatch(listProducts(mockData))
-  },[])
+  console.log("products", products);
 
-  console.log(productList);
 
   const handleSelect = (item) => {
-    dispatch(selectProduct(item))
+    console.log("item", item);
+    //dispatch(selectProduct(item))
   }
 
   return (
@@ -30,13 +28,13 @@ const ProductList = ({title}) => {
       <h2>{title}</h2>
       <div className={styles.items_list}>
         {
-          productList.products.map((item) => {
+          products.map((item) => {
             return (
               <div key={item.id}>
                 {
                   (item.productStock > 0) && (
                 <div 
-                  onClick={() => {handleSelect(item); router.push('/product_detail')}}
+                  onClick={() => {handleSelect(item); /* router.push('/product_detail') */}}
                   className={styles.product_card}
                 >
                   <Image
@@ -60,5 +58,11 @@ const ProductList = ({title}) => {
     </div>
   )
 }
+
+/* export const getServerSideProps = wrapper.getServerSideProps( store => async () => {
+  console.log('hola');
+  await store.dispatch(getAllProducts())
+})
+ */
 
 export default ProductList
