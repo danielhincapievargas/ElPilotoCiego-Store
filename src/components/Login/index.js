@@ -1,16 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from '@components/Login/login.module.css'
 import { changeForm, form } from '@/redux/slices/formSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
+import Cookies from 'universal-cookie'
 
 const url = 'http://localhost:8080/auth/local/login'
 
 const Login = () => {
+  const cookies = new Cookies()
   const dispatch = useDispatch()
   const router = useRouter()
+  const [logged, SetLogged] = useState({
+    profile: {
+      userEmail: "",
+      userFirstName: "",
+      userLastName: "",
+      userRole: ""
+    },
+    token: ""
+})
   const currentForm = useSelector(form)
   const {userEmail, userPassword} = currentForm.form
+
 
   const handleChange = (e) => {
     const {name, value} = e.target
@@ -27,24 +39,35 @@ const Login = () => {
         }       
       });
       const res = await response.json();
-      console.log('respuesta del login', res);
-      return res 
+      //console.log('respuesta', res);
+      SetLogged(res)
+      return res
     } catch (error) {
       console.log('Error en fetchLogin', error)
     }
   }
 
+  //console.log("logged", logged);
+
   const dataLogin = {userEmail, userPassword}
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    fetchLogin(url, dataLogin)
+    await fetchLogin(url, dataLogin)
+    router.push('/')
   }
+
+  cookies.set('token', logged.token, { path: "/" })
+  cookies.set('userFirstName', logged.profile.userFirstName, { path: "/" })
+  cookies.set('userLastName', logged.profile.userLastName, { path: "/" })
+  cookies.set('userEmail', logged.profile.userEmail, { path: "/" })
+  cookies.set('userRole', logged.profile.userRole, { path: "/" })
+
 
   return (
     <div className={styles.login}>
       <h2>Login</h2>
-      <form onSubmit={(e) => {handleSubmit(e); router.push('/')}}>
+      <form onSubmit={(e) => {handleSubmit(e)}}>
         <div className={styles.form_group}>
           <label htmlFor="email">EMAIL</label>
           <input

@@ -1,6 +1,7 @@
 import React from 'react'
 import AdminHeader from '@/components/AdminHeader'
 import AdminUsersTable from '@/components/AdminUsersTable'
+import authenticatedRoute from '@/components/HOC/AuthenticatedRoute'
 
 const AdminUsers = () => {
   return (
@@ -11,4 +12,4 @@ const AdminUsers = () => {
   )
 }
 
-export default AdminUsers
+export default authenticatedRoute(AdminUsers, {pathAfterFailure: '/'})

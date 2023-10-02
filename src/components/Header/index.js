@@ -5,10 +5,24 @@ import { FaRegUserCircle } from 'react-icons/fa'
 import { HiOutlineShoppingBag } from "react-icons/hi2"
 import { Spin as Hamburger } from 'hamburger-react'
 import { useRouter } from 'next/router'
+import Cookies from 'universal-cookie'
 
 const Header = () => {
   const router = useRouter()
-  const [logged, setLogged] = useState(false)
+  const cookies = new Cookies()
+
+  const token = cookies.get('token')
+  const role = cookies.get('userRole')
+
+  const handleLogout = () => {
+    console.log("logout");
+    cookies.remove('token')
+    cookies.remove('userFirstName')
+    cookies.remove('userLastName')
+    cookies.remove('userEmail')
+    cookies.remove('userRole')
+    router.push('/')
+  }
   return (
 
     <div className={styles.header_container}>
@@ -16,13 +30,23 @@ const Header = () => {
 
         <div className={styles.left_header}>
           <div className={styles.login_container}>
-            <FaRegUserCircle className={styles.user_icon} onClick={() => router.push('/login')} />
-            <div className={styles.logged_card}>
-              <div className={styles.logged_list}>
-                <div className={styles.logged_list_tag}>Profile</div>
-                <div className={styles.logged_list_tag}>Logout</div>
+            <FaRegUserCircle className={styles.user_icon} onClick={() => token ? undefined : router.push('/login')} />
+            {token && (
+              <div className={styles.logged_card}>
+                <div className={styles.logged_list}>
+                  <div className={styles.logged_list_tag}>Profile</div>
+                  <div
+                    className={styles.logged_list_tag}
+                    onClick={handleLogout} 
+                  >Logout</div>
+                  {
+                    (role === 'ADMIN') && (
+                      <div className={styles.logged_list_tag} onClick={() =>router.push('/admin/products')}>Dashboard</div>
+                    )
+                  }
+                </div>
               </div>
-            </div>
+            )}
           </div>
           <ul>
             <li onClick={() => router.push('/apparel')}>APPAREL</li>
