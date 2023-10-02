@@ -3,6 +3,7 @@ import { HYDRATE } from "next-redux-wrapper";
 
 const initialState = {
   products: [],
+  product: {},
   error: null,
   status: 'idle'
 }
@@ -12,7 +13,13 @@ const productsSlice = createSlice({
   initialState,
   reducers: {
     listProducts: (state, { payload }) => {
+      //console.log('state.products', state.products);
       state.products = payload
+    },
+    listSingleProduct: (state, { payload }) => {
+      console.log("PAYLOAD", payload);
+      state.product = payload
+      console.log("STATE.PRODUCT", state.product);
     },
     setError: (state, { payload }) => {
       state.error = payload
@@ -25,11 +32,21 @@ const productsSlice = createSlice({
       }
   
       state.products = action.payload.products.products
-    }
-  }
+  
+      state.product = action.payload.products.product
+    },
+/*     [HYDRATE]: (state, action) => {
+      if(action.payload.products.error) {
+        return state.error = action.payload.products.error
+      }
+  
+      state.product = action.payload.products.product
+    } */
+  },
+  
 })
   
-export const { listProducts } = productsSlice.actions
+export const { listProducts, listSingleProduct } = productsSlice.actions
 
 export const stateProducts = state => state.products
 
@@ -43,5 +60,18 @@ export const getAllProducts = () => async (dispatch) => {
       dispatch(setError(error.message))
   }
 }
+
+export const getSingleProduct = (productId) => async (dispatch) => {
+  try {
+    const response = await fetch(`http://localhost:8080/api/products/${productId}`)
+    const res = await response.json()
+    //console.log('singleProduct', res);
+    dispatch(listSingleProduct(res.data))
+
+  } catch(error) {
+      dispatch(setError(error.message))
+  }
+}
+
 
 export default productsSlice.reducer

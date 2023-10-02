@@ -2,7 +2,7 @@ import React from 'react'
 import HomeBanner from '@/components/HomeBanner'
 import ProductList from '@/components/ProductList'
 import { wrapper } from '@/redux/store'
-import { stateProducts, getAllProducts } from '@/redux/slices/productSlice'
+import { getAllProducts } from '@/redux/slices/productSlice'
 
 import Layout from '@/components/Layout'
 

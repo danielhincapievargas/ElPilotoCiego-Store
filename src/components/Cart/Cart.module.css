@@ -103,11 +103,11 @@
 }
 
 .checkout{
-  cursor: pointer;
   display: flex;
 }
 
 .checkout_button{
+  cursor: pointer;
   font-size: 20px;
   font-weight: 300;
   letter-spacing: 1px;

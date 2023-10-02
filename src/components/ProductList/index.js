@@ -1,26 +1,23 @@
 import React, { useEffect } from 'react'
 import styles from '@components/ProductList/productList.module.css'
 import Image from 'next/image'
-import mockData from '../../services/mockData'
-import { useSelector, useDispatch } from 'react-redux'
-import { selectedProduct } from '@/redux/slices/selectedProductSlice'
-import { selectProduct } from '@/redux/slices/selectedProductSlice'
+import { useSelector } from 'react-redux'
 import { stateProducts } from '@/redux/slices/productSlice'
 import { useRouter } from 'next/router'
 
 
 const ProductList = ({ title }) => {
-  //const dispatch = useDispatch()
   const router = useRouter()
   //const selectedItem = useSelector(selectedProduct)
   const { products } = useSelector(stateProducts)
 
-  console.log("products", products);
+
+  //console.log("products", products);
 
 
   const handleSelect = (item) => {
     console.log("item", item);
-    //dispatch(selectProduct(item))
+    router.push(`/product_detail/${item._id}`)
   }
 
   return (
@@ -30,7 +27,7 @@ const ProductList = ({ title }) => {
         {
           products.map((item) => {
             return (
-              <div key={item.id}>
+              <div key={item._id}>
                 {
                   (item.productStock > 0) && (
                 <div 
@@ -58,11 +55,5 @@ const ProductList = ({ title }) => {
     </div>
   )
 }
-
-/* export const getServerSideProps = wrapper.getServerSideProps( store => async () => {
-  console.log('hola');
-  await store.dispatch(getAllProducts())
-})
- */
 
 export default ProductList

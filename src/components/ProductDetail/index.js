@@ -3,6 +3,7 @@ import styles from '@components/ProductDetail/productDetail.module.css'
 import Image from 'next/image'
 import { useSelector, useDispatch } from 'react-redux'
 import { useRouter } from 'next/router'
+import { stateProducts } from '@/redux/slices/productSlice'
 import { 
   selectedProduct,
   updateProductSize,
@@ -10,10 +11,9 @@ import {
   incrementCount,
   decrementCount
 } from '@/redux/slices/selectedProductSlice'
-import { addToCart, cart } from '@/redux/slices/cartSlice'
+import { addToCart } from '@/redux/slices/cartSlice'
 
 const ProductDetail = () => {
-  const currentCart = useSelector(cart)
   const selectedItem = useSelector(selectedProduct);;
   const dispatch = useDispatch();
   const router = useRouter()
@@ -21,6 +21,20 @@ const ProductDetail = () => {
   const [disableAdd, setDisableAdd] = useState(false);
   const [chooseSize, setChooseSize] = useState(false)
   const [selectedSize, setSelectedSize] = useState('');
+
+  const { product } = useSelector(stateProducts)
+
+  //console.log("Product selected", product.productSizes);
+
+
+  const getStockBySize = (data) => {
+    const stockBySize = {};
+    data.productSizes?.forEach(item => {
+      stockBySize[item.size] = item.stock
+    })
+    return stockBySize
+  }
+  const stockBySize = getStockBySize(product)
 
   useEffect(() => {
     dispatch(updateProductCount({productCount: 1}));
@@ -81,122 +95,134 @@ const ProductDetail = () => {
   }
 
   const handleAddToCart = () => {
-    if((selectedItem.productType === 'Tee' || selectedItem.productType === 'Hoodie') && !selectedSize ){
+    if((product.productType === 'Tee' || product.productType === 'Hoodie') && !selectedSize ){
       setChooseSize(true);
       return
     }
-      console.log(selectedItem);
-      dispatch(addToCart(selectedItem))
-      //router.push('/cart')
+
+    const newCartProduct = {
+      ...product,
+      productSize: selectedItem.productSize,
+      productCount: selectedItem.productCount,
+
+    }
+      console.log("newCartProduct", newCartProduct);
+      dispatch(addToCart(newCartProduct))
+      router.push('/cart')
       
     }
-    console.log(currentCart);
+    //console.log(currentCart);
 
 
 
 
   return (
-    <div className={styles.product_detail}>
-      <Image 
-        className={styles.product_img}
-        src={selectedItem.productImage}
-        alt={selectedItem.productType}
-        width={375}
-        height={375}
-        priority
-      />
-      <div className={styles.product_info}>
+    <div>Product Detail
 
-        <div className={styles.product_tags}>
-          <div className={styles.product_name}>{selectedItem.productName}</div>
-          <div className={styles.product_price}>{selectedItem.productPrice}</div>
-        </div>
-
-        {(selectedItem.productType === 'Tee' || selectedItem.productType === 'Hoodie')
-        && (
-        <div className={styles.sizes_container}>
-          <div className={styles.sizes_title}>SIZE</div>
-          <ul className={styles.sizes_list}>
-            <li>
-              <button 
-                className={
-                  (selectedSize === 'S' && (selectedItem.productStockS > 0)) 
-                  ? styles.selected_size 
-                  : (selectedItem.productStockS == 0)  
-                  ? styles.disabled : ''}
-                onClick={(e) => handleSize(e)}
-                value='S'
-              >
-              S
-              </button>
-            </li>
-            <li>
-              <button
-                className={
-                  (selectedSize === 'M' && (selectedItem.productStockM > 0))
-                  ? styles.selected_size
-                  : (selectedItem.productStockM == 0)
-                  ? styles.disabled : ''}
-                onClick={(e) => handleSize(e)}
-                value='M'
-              >
-              M
-              </button>
-            </li>
-            <li>
-              <button
-                className={
-                  (selectedSize === 'L' && (selectedItem.productStockL > 0)) 
-                  ? styles.selected_size 
-                  : (selectedItem.productStockL == 0)  
-                  ? styles.disabled : ''}
-                onClick={(e) => handleSize(e)}
-                value='L'
-                
-              >
-              L
-              </button>
-            </li>
-            <li>
-              <button
-                className={
-                  (selectedSize === 'XL' && (selectedItem.productStockXL > 0)) 
-                  ? styles.selected_size 
-                  : (selectedItem.productStockXL == 0)  
-                  ? styles.disabled : ''}
-                onClick={(e) => handleSize(e)}
-                value='XL'
-                disabled={(selectedItem.productStockXL === 0) ? true : false}
-              >
-              XL
-              </button>
-            </li>
-          </ul>
-        </div>
-        )
-        }
-
-
-        <div className={styles.quantity_container}>
-          <div className={styles.quantity_title}>QUANTITY</div>
-          <div className={styles.quantity_counter}>
-            <button disabled={disableSubstract} onClick={handleSubstract}>-</button>
-            <div className={styles.count}>{selectedItem.productCount}</div>
-            <button disabled={disableAdd} onClick={handleAdd}>+</button>
+      <div className={styles.product_detail}>
+        <Image 
+          className={styles.product_img}
+          src={product.productImage}
+          alt={product.productType}
+          width={375}
+          height={375}
+          priority
+        />
+        <div className={styles.product_info}>
+  
+          <div className={styles.product_tags}>
+            <div className={styles.product_name}>{product.productName}</div>
+            <div className={styles.product_price}>{product.productPrice}</div>
           </div>
+  
+          {(product.productType === 'Tee' || product.productType === 'Hoodie')
+          && (
+          <div className={styles.sizes_container}>
+            <div className={styles.sizes_title}>SIZE</div>
+            <ul className={styles.sizes_list}>
+              <li>
+                <button 
+                  className={
+                    (selectedSize === 'S' && (stockBySize.S > 0)) 
+                    ? styles.selected_size 
+                    : (stockBySize.S == 0)  
+                    ? styles.disabled : ''}
+                  onClick={(e) => handleSize(e)}
+                  value='S'
+                  disabled={(stockBySize.S === 0) ? true : false}
+                >
+                S
+                </button>
+              </li>
+              <li>
+                <button
+                  className={
+                    (selectedSize === 'M' && (stockBySize.M > 0))
+                    ? styles.selected_size
+                    : (stockBySize.M == 0)
+                    ? styles.disabled : ''}
+                  onClick={(e) => handleSize(e)}
+                  value='M'
+                  disabled={(stockBySize.M === 0) ? true : false}
+                >
+                M
+                </button>
+              </li>
+              <li>
+                <button
+                  className={
+                    (selectedSize === 'L' && (stockBySize.L > 0)) 
+                    ? styles.selected_size 
+                    : (stockBySize.L == 0)  
+                    ? styles.disabled : ''}
+                  onClick={(e) => handleSize(e)}
+                  value='L'
+                  disabled={(stockBySize.L === 0) ? true : false}
+                >
+                L
+                </button>
+              </li>
+              <li>
+                <button
+                  className={
+                    (selectedSize === 'XL' && (stockBySize.XL > 0)) 
+                    ? styles.selected_size 
+                    : (stockBySize.XL == 0)  
+                    ? styles.disabled : ''}
+                  onClick={(e) => handleSize(e)}
+                  value='XL'
+                  disabled={(stockBySize.XL === 0) ? true : false}
+                >
+                XL
+                </button>
+              </li>
+            </ul>
+          </div>
+          )
+          }
+  
+  
+          <div className={styles.quantity_container}>
+            <div className={styles.quantity_title}>QUANTITY</div>
+            <div className={styles.quantity_counter}>
+              <button disabled={disableSubstract} onClick={handleSubstract}>-</button>
+              <div className={styles.count}>{selectedItem.productCount}</div>
+              <button disabled={disableAdd} onClick={handleAdd}>+</button>
+            </div>
+          </div>
+  
+          {chooseSize && (<p className={styles.choose_size}>choose a size</p>)}
+  
+          <div className={styles.add_to_cart}>
+            <button 
+              className={styles.add_button}
+              onClick={() => handleAddToCart()}
+            >
+              ADD TO CART
+            </button>
+          </div>
+          
         </div>
-
-        {chooseSize && (<p className={styles.choose_size}>choose a size</p>)}
-
-        <div className={styles.add_to_cart}>
-          <button 
-            className={styles.add_button}
-            onClick={() => handleAddToCart()}
-          >
-            ADD TO CART
-          </button>
-        </div>
-        
       </div>
     </div>
   )
