@@ -1,8 +1,9 @@
 import React from 'react'
 import AdminOrderDetail from '@/components/AdminOrderDetail'
 import AdminHeader from '@/components/AdminHeader'
+import authenticatedRoute from '@/components/HOC/AuthenticatedRoute'
 
-const order_detail = () => {
+const OrderDetail = () => {
   return (
     <>
       <AdminHeader /> 
@@ -11,4 +12,4 @@ const order_detail = () => {
   )
 }
 
-export default order_detail
+export default authenticatedRoute(OrderDetail, {pathAfterFailure: '/'})

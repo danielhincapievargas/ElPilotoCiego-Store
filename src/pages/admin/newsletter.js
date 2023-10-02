@@ -1,5 +1,6 @@
 import React from 'react'
 import AdminHeader from '@/components/AdminHeader'
+import authenticatedRoute from '@/components/HOC/AuthenticatedRoute'
 
 const AdminNewsLetter = () => {
   return (
@@ -10,4 +11,4 @@ const AdminNewsLetter = () => {
   )
 }
 
-export default AdminNewsLetter
+export default authenticatedRoute(AdminNewsLetter, {pathAfterFailure: '/'})
