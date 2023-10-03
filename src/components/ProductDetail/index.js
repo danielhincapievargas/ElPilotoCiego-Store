@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { useSelector, useDispatch } from 'react-redux'
 import { useRouter } from 'next/router'
 import { stateProducts } from '@/redux/slices/productSlice'
+import ProductCounter from '../ProductCounter'
 import { 
   selectedProduct,
   updateProductSize,
@@ -131,15 +132,15 @@ const ProductDetail = () => {
 
 
   return (
-    <div>Product Detail
-
-      <div className={styles.product_detail}>
+    <div>
+      <h2 className={styles.product_detail_title}>PRODUCT DETAIL</h2>
+      <div className={styles.product_detail_container}>
         <Image 
           className={styles.product_img}
           src={product.productImage}
           alt={product.productType}
-          width={375}
-          height={375}
+          width={300}
+          height={300}
           priority
         />
         <div className={styles.product_info}>
@@ -215,15 +216,14 @@ const ProductDetail = () => {
           )
           }
   
-  
-          <div className={styles.quantity_container}>
-            <div className={styles.quantity_title}>QUANTITY</div>
-            <div className={styles.quantity_counter}>
-              <button disabled={disableSubstract} onClick={handleSubstract}>-</button>
-              <div className={styles.count}>{selectedItem.productCount}</div>
-              <button disabled={disableAdd} onClick={handleAdd}>+</button>
-            </div>
-          </div>
+          <ProductCounter
+            title={true}
+            productCount={selectedItem.productCount}
+            handleAdd={handleAdd}
+            handleSubstract={handleSubstract}
+            disableAdd={disableAdd}
+            disableSubstract={disableSubstract}
+          />
   
           {chooseSize && (<p className={styles.choose_size}>choose a size</p>)}
   

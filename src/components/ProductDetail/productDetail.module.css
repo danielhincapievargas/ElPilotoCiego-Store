@@ -1,10 +1,18 @@
-.product_detail{
-  margin-top: 130px;
+.product_detail_title{
+  text-align: center;
+  margin-top: 120px;
+  margin-bottom: 10px;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+.product_detail_container{
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 100px;
+  margin-bottom: 30px;
 }
 
 .product_tags{
@@ -107,9 +115,10 @@
 }
 
 @media screen and (min-width: 768px) {
-  .product_detail{
-    margin-top: 150px;
+  .product_detail_container{
+    margin-top: 30px;
     flex-direction: row;
+    margin-bottom: 100px;
   }
 
   .product_img{

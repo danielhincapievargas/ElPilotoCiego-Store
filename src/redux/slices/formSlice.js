@@ -5,7 +5,15 @@ const initialState = {
     userFirstName: '',
     userLastName: '',
     userEmail: '',
-    userPassword: ''
+    userPassword: '',
+    orderEmail: '',
+    orderCountry: '',
+    orderFirstName: '',
+    orderLastName: '',
+    orderAddress: '',
+    orderCity: '',
+    orderPostcode: '',
+    orderPhone: '',
   }
 }
 

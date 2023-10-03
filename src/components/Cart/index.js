@@ -2,16 +2,36 @@ import React from 'react'
 import styles from '@components/Cart/Cart.module.css'
 import CartProduct from '@components/CartProduct'
 import { cart } from '@/redux/slices/cartSlice'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { removeFromCart } from '@/redux/slices/cartSlice'
+import { useRouter } from 'next/router'
 
 const Cart = () => {
   const currentCart = useSelector(cart)
-  console.log("currentCart", currentCart.cart);
+  const dispatch = useDispatch()
+  const router = useRouter()
+
   let total = 0;
+
+  const handleRemove = (e) => {
+    const itemName = e.currentTarget.getAttribute("nombre");
+    const itemSize = e.currentTarget.getAttribute("talla");
+
+    const payload = {
+      productName: itemName,
+      productSize: itemSize
+    }
+
+    dispatch(removeFromCart(payload))
+  }
+
   return (
     <div className={styles.cart_container}>
       <h2 className={styles.cart_title}>YOUR CART</h2>
-      <div className={styles.continue_shopping}>Continue shopping</div>
+      <div 
+        className={styles.continue_shopping}
+        onClick={() => router.push('/')}
+      >Continue shopping</div>
       <table className={styles.cart_table}>
         <thead>
           <tr>
@@ -27,7 +47,7 @@ const Cart = () => {
             total += subtotal;
           return (
             <tr key={`${item._id}${item.productSize}`}>
-              <td>
+              <td className={styles.cart_product}>
                 <CartProduct
                   page="cart"
                   productImage={item.productImage}
@@ -35,6 +55,7 @@ const Cart = () => {
                   productType={item.productType}
                   productSize={item.productSize}
                 />
+                <div nombre={item.productName} talla={item.productSize} className={styles.remove_product} onClick={(e) => handleRemove(e)}>remove</div>
               </td>
               <td className={styles.product_price}>
                 <div className={styles.product_price_value}>{item.productPrice}</div>
@@ -61,7 +82,10 @@ const Cart = () => {
         <div className={styles.subtotal_value}>{total}</div>
       </div>
       <div className={styles.checkout}>
-        <button className={styles.checkout_button}>Checkout</button>
+        <button 
+          className={styles.checkout_button}
+          onClick={() => router.push('/checkout')}
+        >Checkout</button>
       </div>
     </div>
   )

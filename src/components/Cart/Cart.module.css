@@ -62,12 +62,30 @@
 .price_qty .qty{
   margin-right: 10px;
 }
+.quantity_title{
+  margin-right: 10px;
+}
 
 .price_counter{
   width: 50px;
   display: flex;
   justify-content: space-around;
   border: 1px solid white;
+}
+
+.cart_product{
+  position: relative;
+}
+.remove_product{
+  position:absolute;
+  left: 110px;
+  top: 95px;
+  letter-spacing: 1px;
+  text-decoration: underline;
+  text-decoration-skip-ink: auto;
+  text-underline-offset: 5px;
+  font-weight: 300;
+  cursor: pointer;
 }
 
 .product_price_value{

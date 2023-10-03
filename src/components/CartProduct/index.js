@@ -7,8 +7,11 @@ const CartProduct = ({
   productType,
   productName,
   productSize,
+  productCount,
   page
 }) => {
+
+
   return (
     <div className={styles.cart_product}>
       <Image 
@@ -21,8 +24,17 @@ const CartProduct = ({
       />
       <div className={styles.name_size}>
         <div className={styles.product_name}>{productName}</div>
-        <div className={styles.product_size}>Size: <span>{productSize}</span></div>
-        {(page === 'cart') ? (<div className={styles.remove}>Remove</div>) : undefined}   
+        {(productType === 'Tee' || productType === 'Hoodie' ) 
+        ? (<div className={styles.product_size}>Size: <span>{productSize}</span></div>)
+        : undefined
+      }
+
+      { (page === 'checkout') 
+        ? (<div className={styles.product_size}>{`Qty: ${productCount}`}</div>)
+        : undefined
+      }
+
+        
       </div>
     </div>
   )

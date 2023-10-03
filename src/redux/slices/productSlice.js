@@ -17,9 +17,7 @@ const productsSlice = createSlice({
       state.products = payload
     },
     listSingleProduct: (state, { payload }) => {
-      console.log("PAYLOAD", payload);
       state.product = payload
-      console.log("STATE.PRODUCT", state.product);
     },
     setError: (state, { payload }) => {
       state.error = payload
