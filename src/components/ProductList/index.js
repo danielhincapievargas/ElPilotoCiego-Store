@@ -12,7 +12,7 @@ const ProductList = ({ title }) => {
   const { products } = useSelector(stateProducts)
 
 
-  //console.log("products", products);
+  console.log("products", products);
 
 
   const handleSelect = (item) => {

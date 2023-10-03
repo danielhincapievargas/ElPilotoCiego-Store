@@ -11,7 +11,7 @@ import {
   incrementCount,
   decrementCount
 } from '@/redux/slices/selectedProductSlice'
-import { addToCart } from '@/redux/slices/cartSlice'
+import { addToCart, cart } from '@/redux/slices/cartSlice'
 
 const ProductDetail = () => {
   const selectedItem = useSelector(selectedProduct);;
@@ -23,8 +23,9 @@ const ProductDetail = () => {
   const [selectedSize, setSelectedSize] = useState('');
 
   const { product } = useSelector(stateProducts)
+  const currentCart = useSelector(cart)
 
-  //console.log("Product selected", product.productSizes);
+  console.log("CURRENT CAR", currentCart);
 
 
   const getStockBySize = (data) => {
@@ -94,6 +95,13 @@ const ProductDetail = () => {
     setSelectedSize(e.target.value)
   }
 
+  function findProduct(cart, productName, productSize) {
+    return cart.some(product => 
+      product.productName === productName && product.productSize === productSize
+    );
+  }
+
+
   const handleAddToCart = () => {
     if((product.productType === 'Tee' || product.productType === 'Hoodie') && !selectedSize ){
       setChooseSize(true);
@@ -104,8 +112,14 @@ const ProductDetail = () => {
       ...product,
       productSize: selectedItem.productSize,
       productCount: selectedItem.productCount,
-
     }
+
+    const isInCart = findProduct(currentCart.cart, newCartProduct.productName, newCartProduct.productSize)
+
+    if(isInCart){
+      return alert('Product is already in your cart')
+    }
+
       console.log("newCartProduct", newCartProduct);
       dispatch(addToCart(newCartProduct))
       router.push('/cart')
