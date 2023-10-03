@@ -5,7 +5,9 @@ const initialState = {
     userFirstName: '',
     userLastName: '',
     userEmail: '',
-    userPassword: '',
+    userPassword: ''
+  },
+  deliveryForm:{
     orderEmail: '',
     orderCountry: '',
     orderFirstName: '',
@@ -28,10 +30,17 @@ const formSlice = createSlice({
         [name]: value
       }
     },
+    changeDeliveryForm: (state, { payload }) => {
+      const {name, value} = payload
+      state.deliveryForm = {
+        ...state.deliveryForm,
+        [name]: value
+      }
   }
+}
 })
   
-export const { changeForm } = formSlice.actions
+export const { changeForm, changeDeliveryForm } = formSlice.actions
 
 export const form = state => state.form
 

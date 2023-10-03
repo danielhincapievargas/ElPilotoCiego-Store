@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from '@components/DeliveryForm/deliveryForm.module.css'
 import { useRouter } from 'next/router'
-import { changeForm, form } from '@/redux/slices/formSlice'
+import { changeDeliveryForm, form } from '@/redux/slices/formSlice'
 import { useDispatch, useSelector } from 'react-redux'
 
 const DeliveryForm = () => {
@@ -17,14 +17,14 @@ const DeliveryForm = () => {
     orderCity,
     orderPostcode,
     orderPhone,
-  } = currentForm.form
+  } = currentForm.deliveryForm
 
   const handleChange = (e) => {
     const {name, value} = e.target
-    dispatch(changeForm({name, value}))
+    dispatch(changeDeliveryForm({name, value}))
   }
 
-  console.log("CurrentForm", currentForm.form);
+  console.log("CurrentForm", currentForm.deliveryForm);
 
   return (
     <div className={styles.delivery_form}>

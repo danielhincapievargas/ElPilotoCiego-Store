@@ -13,7 +13,6 @@ const productsSlice = createSlice({
   initialState,
   reducers: {
     listProducts: (state, { payload }) => {
-      //console.log('state.products', state.products);
       state.products = payload
     },
     listSingleProduct: (state, { payload }) => {
@@ -33,13 +32,6 @@ const productsSlice = createSlice({
   
       state.product = action.payload.products.product
     },
-/*     [HYDRATE]: (state, action) => {
-      if(action.payload.products.error) {
-        return state.error = action.payload.products.error
-      }
-  
-      state.product = action.payload.products.product
-    } */
   },
   
 })

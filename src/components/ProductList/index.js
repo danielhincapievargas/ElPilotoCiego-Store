@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styles from '@components/ProductList/productList.module.css'
 import Image from 'next/image'
 import { useSelector } from 'react-redux'
@@ -8,12 +8,7 @@ import { useRouter } from 'next/router'
 
 const ProductList = ({ title }) => {
   const router = useRouter()
-  //const selectedItem = useSelector(selectedProduct)
   const { products } = useSelector(stateProducts)
-
-
-  console.log("products", products);
-
 
   const handleSelect = (item) => {
     console.log("item", item);
