@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styles from '@components/Login/login.module.css'
 import { changeForm, form } from '@/redux/slices/formSlice'
+import { getLoggedUser, stateUsers } from '@/redux/slices/usersSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import Cookies from 'universal-cookie'
@@ -11,7 +12,7 @@ const Login = () => {
   const cookies = new Cookies()
   const dispatch = useDispatch()
   const router = useRouter()
-  const [logged, SetLogged] = useState({
+  /* const [logged, SetLogged] = useState({
     profile: {
       userEmail: "",
       userFirstName: "",
@@ -19,7 +20,11 @@ const Login = () => {
       userRole: ""
     },
     token: ""
-})
+}) */
+  const { loggedUser } = useSelector(stateUsers)
+
+  console.log("logged", loggedUser);
+
   const currentForm = useSelector(form)
   const {userEmail, userPassword} = currentForm.form
 
@@ -39,8 +44,9 @@ const Login = () => {
         }       
       });
       const res = await response.json();
-      //console.log('respuesta', res);
-      SetLogged(res)
+      console.log('respuesta', res);
+      dispatch(getLoggedUser(res))
+      //SetLogged(res)
       return res
     } catch (error) {
       console.log('Error en fetchLogin', error)
@@ -54,14 +60,15 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await fetchLogin(url, dataLogin)
-    router.push('/')
+    await router.push('/')
   }
-
-  cookies.set('token', logged.token, { path: "/" })
-  cookies.set('userFirstName', logged.profile.userFirstName, { path: "/" })
-  cookies.set('userLastName', logged.profile.userLastName, { path: "/" })
-  cookies.set('userEmail', logged.profile.userEmail, { path: "/" })
-  cookies.set('userRole', logged.profile.userRole, { path: "/" })
+  
+  cookies.set('token', loggedUser.token, { path: "/" })
+  cookies.set('userFirstName', loggedUser.profile.userFirstName, { path: "/" })
+  cookies.set('userLastName', loggedUser.profile.userLastName, { path: "/" })
+  cookies.set('userEmail', loggedUser.profile.userEmail, { path: "/" })
+  cookies.set('userRole', loggedUser.profile.userRole, { path: "/" })
+  
 
 
   return (
