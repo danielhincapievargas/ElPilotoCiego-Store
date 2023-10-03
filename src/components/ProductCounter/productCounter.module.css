@@ -1,0 +1,26 @@
+.quantity_container{
+  margin-top: 20px;
+}
+.quantity_title{
+  text-align: center;
+  font-weight: 300;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.quantity_counter{
+  margin: 0 auto;
+  width: 80px;
+  display: flex;
+  justify-content: center;
+  border: 1px solid white;
+}
+
+.quantity_counter button{
+  cursor: pointer;
+}
+
+.quantity_counter button, .quantity_counter .count{
+  font-size: 20px;
+  padding: 0 8px;
+}

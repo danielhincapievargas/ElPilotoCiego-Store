@@ -27,8 +27,8 @@ const BannerCarousel = () => {
               className={styles.slide_img}
               src="/epc-1frontcover.jpg"
               alt="front cover"
-              width={375}
-              height={375}
+              width={330}
+              height={330}
               priority
             />
           </div>
@@ -37,8 +37,8 @@ const BannerCarousel = () => {
               className={styles.slide_img}
               src="/epc-mock_page1.jpg"
               alt="front cover"
-              width={375}
-              height={375}
+              width={330}
+              height={330}
               priority
             />
           </div>
@@ -47,8 +47,8 @@ const BannerCarousel = () => {
               className={styles.slide_img}
               src="/epc-mock_page2.jpg"
               alt="front cover"
-              width={375}
-              height={375}
+              width={330}
+              height={330}
               priority
             />
           </div>
@@ -57,8 +57,8 @@ const BannerCarousel = () => {
               className={styles.slide_img}
               src="/epc-xbackcover.jpg"
               alt="front cover"
-              width={375}
-              height={375}
+              width={330}
+              height={330}
               priority
             />
           </div>

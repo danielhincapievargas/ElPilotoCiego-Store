@@ -1,6 +1,6 @@
 .slider_container {
   margin: 0 auto;
-  width: 375px;
+  width: 330px;
 }
 
 .single_slide{
@@ -9,10 +9,10 @@
 
 @media screen and (min-width: 900px) {
   .slider_container {
-    width: 500px;
+    width: 330px;
   }
   .slide_img{
-    width: 500px;
-    height: 500px;
+    width: 330px;
+    height: 330px;
   }
 }
