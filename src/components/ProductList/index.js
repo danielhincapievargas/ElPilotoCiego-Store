@@ -31,7 +31,7 @@ const ProductList = ({ title }) => {
                 {
                   (item.productStock > 0) && (
                 <div 
-                  onClick={() => {handleSelect(item); /* router.push('/product_detail') */}}
+                  onClick={() => {handleSelect(item)}}
                   className={styles.product_card}
                 >
                   <Image

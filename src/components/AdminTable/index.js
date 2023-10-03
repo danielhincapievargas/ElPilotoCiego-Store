@@ -1,16 +1,26 @@
 import React from 'react'
 import styles from '@components/AdminTable/adminTable.module.css'
 import Image from 'next/image'
-import mockData from '@/services/mockData'
 import { useRouter } from 'next/router'
+import { stateProducts } from '@/redux/slices/productSlice'
+import { useSelector } from 'react-redux'
 
 export const AdminTable = () => {
+  const { products } = useSelector(stateProducts)
+  console.log("PRODUCTS", products);
   const router = useRouter()
+  const handleSelect = (product) => {
+    console.log("ITEM.ID", product._id);
+    router.push(`/admin/products/${product._id}`)
+  }
   return (
     <div className={styles.product_container}>
       <h2 className={styles.product_title}>PRODUCTS</h2>
       <div className={styles.add_product}>
-        <button className={styles.add_button} onClick={() => router.push('/admin/products/add_product')}>ADD PRODUCT</button>
+        <button
+          className={styles.add_button}
+          onClick={() => router.push('/admin/products/add_product')}
+        >ADD PRODUCT</button>
       </div>
       <table className={styles.product_table}>
         <thead>
@@ -23,9 +33,9 @@ export const AdminTable = () => {
           </tr>
         </thead>
         <tbody>
-          {mockData.map((product) => { 
+          {products.map((product) => { 
         return (
-          <tr key={product.id}>
+          <tr key={product._id}>
             <td>
               <Image 
                 className={styles.product_img}
@@ -46,7 +56,10 @@ export const AdminTable = () => {
                   </div>
                 </div>
                 <div className={styles.actions_mobile}>
-                  <span className={styles.edit_product} onClick={() => router.push('/admin/products/edit_product')}>Edit</span>
+                  <span
+                    className={styles.edit_product}
+                    onClick={() => {handleSelect(product)}}
+                  >Edit</span>
                   <span>  |  </span>
                   <span className={styles.delete_product}>Delete</span>
                 </div>
@@ -59,7 +72,7 @@ export const AdminTable = () => {
               </div>
             </td>
             <td className={styles.actions}>
-              <span className={styles.edit_product} onClick={() => router.push('/admin/products/edit_product')}>Edit</span>
+              <span className={styles.edit_product} onClick={() => {handleSelect(product)}}>Edit</span>
               <span>  |  </span>
               <span className={styles.delete_product}>Delete</span>
             </td>

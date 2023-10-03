@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import styles from '@components/AdminProductDetail/adminProductDetail.module.css'
+import { stateProducts } from '@/redux/slices/productSlice'
+import { useSelector } from 'react-redux'
 
 const AdminProductDetail = ({action}) => {
+  const { product } = useSelector(stateProducts)
 
   const [type, setType] = useState('') 
 
@@ -11,14 +14,23 @@ const AdminProductDetail = ({action}) => {
     setType(choosedType)
   }
 
+  const getStockBySize = (data) => {
+    const stockBySize = {};
+    data.productSizes?.forEach(item => {
+      stockBySize[item.size] = item.stock
+    })
+    return stockBySize
+  }
+  const stockBySize = getStockBySize(product)
+
   return (
     <div className={styles.add_product_container}>
       <div className={styles.image_group}>
         <h2>PRODUCT IMAGE</h2>
         <Image 
           className={styles.product_img}
-          src="/elpiloto-badbrain-tee-black.jpeg"
-          alt="Tee"
+          src={product.productImage}
+          alt={product.productType}
           width={300}
           height={300}
           priority
@@ -31,13 +43,19 @@ const AdminProductDetail = ({action}) => {
 
           <div className={styles.form_group}>
             <label htmlFor="product_name">Name</label>
-            <input id="product_name" type="text" placeholder="Product name" required />
+            <input
+              id="product_name"
+              type="text"
+              placeholder="Product name"
+              required
+              value={product.productName}
+            />
           </div>
 
           <div className={styles.groups}>
             <div className={styles.group}>
               <label htmlFor="product_type">Product Type</label>
-              <select onChange={handleType} id="product_type" type="text" placeholder="Type" required>
+              <select defaultValue={product.productType} onChange={handleType} id="product_type" type="text" placeholder="Type" required>
                 <option value="">Choose Type</option>
                 <option value="Tee">Tee</option>
                 <option value="Hoodie">Hoodie</option>
@@ -50,7 +68,13 @@ const AdminProductDetail = ({action}) => {
             </div>
             <div className={styles.group}>
               <label htmlFor="prduct_price">Price</label>
-              <input id="prduct_price" type="text" placeholder="Price" required />
+              <input
+                id="prduct_price"
+                type="text"
+                placeholder="Price"
+                required
+                value={product.productName}
+              />
             </div>
           </div>
 
@@ -58,19 +82,42 @@ const AdminProductDetail = ({action}) => {
             <div className={styles.groups}>
               <div className={styles.group}>
                 <label htmlFor="s_stock">S</label>
-                <input id="s_stock" type="text" placeholder="S Stock" required />
+                <input
+                  value={stockBySize.S}
+                  id="s_stock" type="text"
+                  placeholder="S Stock"
+                  required
+                />
               </div>
               <div className={styles.group}>
                 <label htmlFor="m_stock">M</label>
-                <input id="m_stock" type="text" placeholder="M Stock" required />
+                <input
+                  value={stockBySize.M}
+                  id="m_stock"
+                  type="text"
+                  placeholder="M Stock"
+                  required
+                />
               </div>
               <div className={styles.group}>
                 <label htmlFor="l_stock">L</label>
-                <input id="l_stock" type="text" placeholder="L Stock" required />
+                <input
+                  value={stockBySize.L}
+                  id="l_stock"
+                  type="text"
+                  placeholder="L Stock"
+                  required
+                />
               </div>
               <div className={styles.group}>
                 <label htmlFor="xl_stock">XL</label>
-                <input id="xl_stock" type="text" placeholder="XL Stock" required />
+                <input
+                  value={stockBySize.XL}
+                  id="xl_stock"
+                  type="text"
+                  placeholder="XL Stock"
+                  required
+                />
               </div>
             </div>
           )}
@@ -78,12 +125,19 @@ const AdminProductDetail = ({action}) => {
           <div className={styles.groups}>
             <div className={styles.group}>
               <label htmlFor="stock">STOCK</label>
-              <input id="stock" type="number" min={0} placeholder="Stock" required />
+              <input
+                value={product.productStock}
+                id="stock"
+                type="number"
+                min={0}
+                placeholder="Stock"
+                required
+              />
             </div>
 
             <div className={styles.group}>
               <label htmlFor="featured">FEATURED?</label>
-              <select id="featured" type="text" placeholder="" required>
+              <select defaultValue={product.productFeatured} id="featured" type="text" placeholder="" required>
                 <option value="Yes">Yes</option>
                 <option value="No">No</option>
               </select>

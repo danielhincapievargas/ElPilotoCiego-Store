@@ -1,10 +1,10 @@
 .add_product_container{
-  margin-top: 130px;
+  margin-top: 0px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 100px;
+  margin-bottom: 0px;
 }
 
 .delivery_form{

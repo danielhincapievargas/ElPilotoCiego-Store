@@ -22,7 +22,6 @@ const ProductDetail = () => {
   const [disableAdd, setDisableAdd] = useState(false);
   const [chooseSize, setChooseSize] = useState(false)
   const [selectedSize, setSelectedSize] = useState('');
-
   const { product } = useSelector(stateProducts)
   const currentCart = useSelector(cart)
 
