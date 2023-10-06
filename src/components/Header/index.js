@@ -15,7 +15,6 @@ const Header = () => {
   const role = cookies.get('userRole')
 
   const handleLogout = () => {
-    console.log("logout");
     cookies.remove('token')
     cookies.remove('userFirstName')
     cookies.remove('userLastName')

@@ -12,18 +12,8 @@ const Login = () => {
   const cookies = new Cookies()
   const dispatch = useDispatch()
   const router = useRouter()
-  /* const [logged, SetLogged] = useState({
-    profile: {
-      userEmail: "",
-      userFirstName: "",
-      userLastName: "",
-      userRole: ""
-    },
-    token: ""
-}) */
+  
   const { loggedUser } = useSelector(stateUsers)
-
-  console.log("logged", loggedUser);
 
   const currentForm = useSelector(form)
   const {userEmail, userPassword} = currentForm.form
@@ -44,16 +34,15 @@ const Login = () => {
         }       
       });
       const res = await response.json();
-      console.log('respuesta', res);
       dispatch(getLoggedUser(res))
-      //SetLogged(res)
+
       return res
     } catch (error) {
-      console.log('Error en fetchLogin', error)
+      alert('Error en fetchLogin', error)
     }
   }
 
-  //console.log("logged", logged);
+
 
   const dataLogin = {userEmail, userPassword}
 

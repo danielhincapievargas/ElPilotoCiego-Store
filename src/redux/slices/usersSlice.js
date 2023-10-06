@@ -22,7 +22,6 @@ const usersSlice = createSlice({
   initialState,
   reducers: {
     listUsers: (state, { payload }) => {
-      //console.log('state.products', state.products);
       state.users = payload
     },
     listSingleUser: (state, { payload }) => {
@@ -69,7 +68,7 @@ export const getSingleUser = (userId) => async (dispatch) => {
   try {
     const response = await fetch(`http://localhost:8080/api/users/${userId}`)
     const res = await response.json()
-    //console.log('singleProduct', res);
+
     dispatch(listSingleUser(res.data))
 
   } catch(error) {

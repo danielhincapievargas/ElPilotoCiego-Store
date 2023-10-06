@@ -7,22 +7,31 @@
   margin-bottom: 0px;
 }
 
-.delivery_form{
+.admin_product{
   display: flex;
   flex-direction: column;
-  margin: 30px auto;
-  padding: 0 20px;
-  width: 100%;
-  max-width: 500px;
+  margin: 20px auto;
 }
-.delivery_form .contact, .delivery_form .delivery {
+
+.image_group{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form_detail_info{
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.admin_product .image_group h2, .admin_product .form_detail_info h2{
   font-size: 30px;
   text-align: left;
   margin-bottom: 20px;
-  font-weight: 400;
+  font-weight: 300;
   letter-spacing: 2px;
 }
-
 .have_account {
   font-weight: 300;
   letter-spacing: 2px;
@@ -45,6 +54,12 @@
   display: flex;
   flex-direction: column;
   width: 48%;
+}
+
+.group_stock{
+  display: flex;
+  flex-direction: column;
+  width: 24%;
 }
 
 .groups .group input{
@@ -75,5 +90,22 @@
 @media screen and (min-width: 768px) {
   .add_product_container{
     flex-direction: row;
+  }
+
+  .admin_product{
+    flex-direction: row;
+    width: 100%;
+    margin: 0 auto;
+    max-width: 768px;
+  }
+  .image_group{
+    width: 50%;
+  }
+  
+  .form_detail_info{
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding-top: 20px;
   }
 }

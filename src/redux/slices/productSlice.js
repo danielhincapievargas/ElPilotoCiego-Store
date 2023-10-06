@@ -55,13 +55,12 @@ export const getSingleProduct = (productId) => async (dispatch) => {
   try {
     const response = await fetch(`http://localhost:8080/api/products/${productId}`)
     const res = await response.json()
-    //console.log('singleProduct', res);
+
     dispatch(listSingleProduct(res.data))
 
   } catch(error) {
       dispatch(setError(error.message))
   }
 }
-
 
 export default productsSlice.reducer
