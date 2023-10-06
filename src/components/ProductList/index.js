@@ -11,7 +11,6 @@ const ProductList = ({ title }) => {
   const { products } = useSelector(stateProducts)
 
   const handleSelect = (item) => {
-    console.log("item", item);
     router.push(`/product_detail/${item._id}`)
   }
 

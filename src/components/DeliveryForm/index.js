@@ -24,8 +24,6 @@ const DeliveryForm = () => {
     dispatch(changeDeliveryForm({name, value}))
   }
 
-  console.log("CurrentForm", currentForm.deliveryForm);
-
   return (
     <div className={styles.delivery_form}>
 

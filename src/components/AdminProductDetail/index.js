@@ -4,12 +4,17 @@ import styles from '@components/AdminProductDetail/adminProductDetail.module.css
 import { stateProducts, listSingleProduct } from '@/redux/slices/productSlice'
 import { useSelector, useDispatch } from 'react-redux'
 
+
+
 const AdminProductDetail = ({action}) => {
   const { product } = useSelector(stateProducts)
   const [image, setImage] = useState(null)
   const [file, setFile] = useState (null)
   const [type, setType] = useState('')
   const dispatch = useDispatch()
+
+  const url = `http://localhost:8080/api/products/${product._id}`
+
 
 
   const [currentStockS, setCurrentStockS] = useState(0)
@@ -23,6 +28,7 @@ const AdminProductDetail = ({action}) => {
       data.productSizes?.forEach(item => {
         stockBySize[item.size] = item.stock
       })
+
       return stockBySize
     }
     const stockBySize = getStockBySize(product)
@@ -33,9 +39,6 @@ const AdminProductDetail = ({action}) => {
     setCurrentStockXL(stockBySize.XL)
 
   }, [])
-
-  console.log(currentStockS, currentStockM, currentStockL, currentStockXL);
-
 
   const handleType = (e) => {
     const choosedType = e.target.value;
@@ -49,7 +52,6 @@ const AdminProductDetail = ({action}) => {
   }
 
   const handleChangeImg = (e) => {
-   // console.log("handleChangeImg", e.target.files);
     readFile(e.target.files[0])
     setFile(e.target.files[0])
     
@@ -59,7 +61,6 @@ const AdminProductDetail = ({action}) => {
 
     const { value, name } = event.target
     
-    console.log("currentSize", event.target.name);
     if(name === "currentStockS"){
       setCurrentStockS(parseInt(value))
     }
@@ -72,15 +73,6 @@ const AdminProductDetail = ({action}) => {
     if(name === "currentStockXL"){
       setCurrentStockXL(parseInt(value))
     }
-
-  };
-  
-
-
-  const handleChange = (e) => {
-    const {name, value} = e.target
-
-    console.log("currentSotck", currentStockS);
 
     const currentSotck = [
       {
@@ -101,40 +93,47 @@ const AdminProductDetail = ({action}) => {
       },
     ]
 
-    console.log(currentSotck);
+    const updatedProduct = {
+      ...product,
+      productSizes: currentSotck
+    }
+
+
+    dispatch(listSingleProduct(updatedProduct))
+
+  };
+
+  
+
+
+  const handleChange = (e) => {
+    const {name, value} = e.target
 
     const updatedProduct = {
       ...product,
       [name]: value,
-      productSizes: currentSotck
     }
-
-    console.log("updatedProduct", updatedProduct);
 
     dispatch(listSingleProduct(updatedProduct))
   }
 
-  //console.log("PRODUCT", product);
   const fetchUpdateProduct = async (url, data) => {
+
     try {
       const response = await fetch(url, {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        }       
+        method: 'PUT',
+        body: data, 
       });
       const res = await response.json();
       return res
     } catch (error) {
-      console.log('Error en fetchImg', error)
+      alert('Error en fetchImg', error)
     }
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log(currentStock);
-/* 
+
     const data = new FormData
 
     data.append('productName', product.productName);
@@ -145,8 +144,14 @@ const AdminProductDetail = ({action}) => {
     data.append('productFeatured', product.productFeatured);
     data.append('productImage', file, file.name)
 
+    product.productSizes.forEach((sizeObj, index) => {
+      const sizeKey = `productSizes[${index}]`;
+      data.append(`${sizeKey}[size]`, sizeObj.size);
+      data.append(`${sizeKey}[stock]`, sizeObj.stock);
+    });
+
     await fetchUpdateProduct(url, data)
-    return alert('productUpdated') */
+    return alert('petición')
 }
 
   return (
@@ -158,14 +163,14 @@ const AdminProductDetail = ({action}) => {
           <div className={styles.image_group}>
             <h2>PRODUCT IMAGE</h2>
             
-          {/* <Image 
+          {!image && <Image 
               className={styles.product_img}
               src={product.productImage}
               alt={product.productType}
               width={300}
               height={300}
               priority
-            /> */}
+            /> }
           {image && <Image 
               className={styles.product_img}
               src={image}
@@ -177,6 +182,7 @@ const AdminProductDetail = ({action}) => {
             <input
               type="file"
               name="file"
+              multiple={true}
               accept='image/*'
               onChange={ handleChangeImg }
             />
@@ -246,7 +252,7 @@ const AdminProductDetail = ({action}) => {
                     type="number"
                     placeholder="S Stock"
                     required
-                    onChange={(event) => handleChangeStock(event, "S")}
+                    onChange={(event) => handleChangeStock(event)}
                   />
                 </div>
                 <div className={styles.group_stock}>
@@ -259,7 +265,7 @@ const AdminProductDetail = ({action}) => {
                   type="number"
                   placeholder="M Stock"
                   required
-                  onChange={(event) => handleChangeStock(event, "M")}
+                  onChange={(event) => handleChangeStock(event)}
                   />
                 </div>
                 <div className={styles.group_stock}>
@@ -272,7 +278,7 @@ const AdminProductDetail = ({action}) => {
                   type="number"
                   placeholder="L Stock"
                   required
-                  onChange={(event) => handleChangeStock(event, "L")}
+                  onChange={(event) => handleChangeStock(event)}
                   />
                 </div>
                 <div className={styles.group_stock}>
@@ -285,7 +291,7 @@ const AdminProductDetail = ({action}) => {
                   type="number"
                   placeholder="XL Stock"
                   required
-                  onChange={(event) => handleChangeStock(event, "XL")}
+                  onChange={(event) => handleChangeStock(event)}
                   />
                 </div>
               </div>
