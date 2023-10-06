@@ -14,7 +14,7 @@ For development, you will only need:
 ### Screenshot of project
 
   <p {align="center"}>
-  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbWR6cGg3Z3V2cTA4MG52bjFvNTdpZjRvdW81bDFlbnUwY2Zhd2tmciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/AedTBWYQW1D1f7TLdL/giphy.gif" alt="Screenshot"/>
+  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdG52eWp1OW9waXlwZGZwaWcxN2g3MDFzNzZpcWN0N3NuZzFnZGw5dSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/iOcoHKyPMGdDpge38R/giphy.gif" alt="Screenshot"/>
   </p>
 
 
