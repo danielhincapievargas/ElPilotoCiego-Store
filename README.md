@@ -109,4 +109,4 @@ To do:
 ## Contact
 Created by Daniel Hincapié Vargas - feel free to contact me!
 
-www.linkedin.com/in/daniel-hincapié-vargas
+www.linkedin.com/in/daniel-hincapie-vargas
