@@ -7,10 +7,8 @@ import { useSelector } from 'react-redux'
 
 export const AdminTable = () => {
   const { products } = useSelector(stateProducts)
-  console.log("PRODUCTS", products);
   const router = useRouter()
   const handleSelect = (product) => {
-    console.log("ITEM.ID", product._id);
     router.push(`/admin/products/${product._id}`)
   }
   return (

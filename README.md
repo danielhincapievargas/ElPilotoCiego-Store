@@ -1,38 +1,112 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# El Piloto Ciego Store
+> Website for the sale of merchandise from the band El Piloto Ciego.
 
-## Getting Started
+## Table of Contents
+* [General Info](#general-information)
+* [Technologies Used](#technologies-used)
+* [Features](#features)
+* [Screenshots](#screenshots)
+* [Setup](#setup)
+* [Usage](#usage)
+* [Project Status](#project-status)
+* [Room for Improvement](#room-for-improvement)
+* [Acknowledgements](#acknowledgements)
+* [Contact](#contact)
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+
+## General Information
+
+This project is the prototype of a rock band merchandise store. In this application, the user will be able to purchase the various products offered by the band. Additionally, the application has an administrator role that can create, read, update, and delete products from the store.
+
+
+## Technologies Used
+- [Git](https://git-scm.com/downloads)
+- [React](https://es.react.dev/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+- [Next](https://nextjs.org/)
+- [npm](https://www.npmjs.com/)
+
+
+## Features
+
+- User can choose products and add them to the cart and have an order summary.
+- Admin can login and access to the admin dashboard to see all products and edit them.
+
+
+## Screenshot of project
+
+<p {align="center"}>
+  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdG52eWp1OW9waXlwZGZwaWcxN2g3MDFzNzZpcWN0N3NuZzFnZGw5dSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/iOcoHKyPMGdDpge38R/giphy.gif" alt="Screenshot"/>
+  </p>
+
+
+## Setup
+The project have the following dependencies:
+
+```json
+    "dependencies": {
+    "@reduxjs/toolkit": "^1.9.6",
+    "eslint": "8.49.0",
+    "eslint-config-next": "13.4.19",
+    "hamburger-react": "^2.5.0",
+    "next": "13.4.19",
+    "next-redux-wrapper": "^8.1.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-icons": "^4.11.0",
+    "react-redux": "^8.1.2",
+    "react-slick": "^0.29.0",
+    "redux": "^4.2.1",
+    "slick-carousel": "^1.8.1",
+    "universal-cookie": "^6.1.1"
+  }
+```
+and the following scripts:
+
+```json
+"scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Usage
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## 🔧 Install 
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+    $ git clone git@github.com:danielhincapievargas/ElPilotoCiego-Store
+    $ cd elpilotostore
+    $ npm install
+    
+## 🛠️ Local development
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+    npm run dev
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## Project Status
+Project is: _in progress_ 
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Room for Improvement
+At the moment the project has user authentication and image upload for product editing.
 
-## Deploy on Vercel
+Room for improvement:
+- The user experience can be improved by allowing users to have their information by default in their orders when they have an account.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+To do:
+- Add payment feature with stripe
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Acknowledgements
+
+- This project was inspired by The Clash Store (https://store.theclash.com/)
+- Many thanks to Make It Real for giving me the opportunity to learn while developing. It was a very enriching work experience.
+
+
+## Contact
+Created by Daniel Hincapié Vargas - feel free to contact me!
+
+www.linkedin.com/in/daniel-hincapie-vargas

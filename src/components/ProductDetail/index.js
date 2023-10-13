@@ -25,9 +25,6 @@ const ProductDetail = () => {
   const { product } = useSelector(stateProducts)
   const currentCart = useSelector(cart)
 
-  console.log("CURRENT CAR", currentCart);
-
-
   const getStockBySize = (data) => {
     const stockBySize = {};
     data.productSizes?.forEach(item => {
@@ -120,15 +117,10 @@ const ProductDetail = () => {
       return alert('Product is already in your cart')
     }
 
-      console.log("newCartProduct", newCartProduct);
       dispatch(addToCart(newCartProduct))
       router.push('/cart')
       
     }
-    //console.log(currentCart);
-
-
-
 
   return (
     <div>

@@ -32,10 +32,9 @@ const CreateAccount = () => {
         body: JSON.stringify(data)
       });
       const res = await response.json();
-      console.log('respuesta del Create Account', res);
       return res 
     } catch (error) {
-      console.log('Error en fetchCreateAccount', error)
+      alert('Error en fetchCreateAccount', error)
     }
   }
 

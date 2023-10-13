@@ -2,7 +2,6 @@ import React from 'react'
 import styles from '@components/AdminHeader/adminHeader.module.css'
 import Image from 'next/image'
 import { FaRegUserCircle } from 'react-icons/fa'
-import { HiOutlineShoppingBag } from "react-icons/hi2"
 import { Spin as Hamburger } from 'hamburger-react'
 import { useRouter } from 'next/router'
 
