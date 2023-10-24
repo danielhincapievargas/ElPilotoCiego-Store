@@ -1,9 +1,14 @@
 .add_product_container{
+<<<<<<< HEAD
   margin-top: 0px;
+=======
+  margin-top: 130px;
+>>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+<<<<<<< HEAD
   margin-bottom: 0px;
 }
 
@@ -32,6 +37,27 @@
   font-weight: 300;
   letter-spacing: 2px;
 }
+=======
+  margin-bottom: 100px;
+}
+
+.delivery_form{
+  display: flex;
+  flex-direction: column;
+  margin: 30px auto;
+  padding: 0 20px;
+  width: 100%;
+  max-width: 500px;
+}
+.delivery_form .contact, .delivery_form .delivery {
+  font-size: 30px;
+  text-align: left;
+  margin-bottom: 20px;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+>>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
 .have_account {
   font-weight: 300;
   letter-spacing: 2px;
@@ -56,12 +82,15 @@
   width: 48%;
 }
 
+<<<<<<< HEAD
 .group_stock{
   display: flex;
   flex-direction: column;
   width: 24%;
 }
 
+=======
+>>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
 .groups .group input{
   width: 100%;
 }
@@ -91,6 +120,7 @@
   .add_product_container{
     flex-direction: row;
   }
+<<<<<<< HEAD
 
   .admin_product{
     flex-direction: row;
@@ -108,4 +138,6 @@
     margin-top: 20px;
     padding-top: 20px;
   }
+=======
+>>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
 }

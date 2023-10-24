@@ -34,6 +34,7 @@
   padding: 5px 100px;
   font-size: 20px;
   letter-spacing: 2px;
+<<<<<<< HEAD
 }
 
 .login{
@@ -44,4 +45,6 @@
 
 .login:hover{
   color: #e72076;
+=======
+>>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
 }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react'
 import styles from '@components/ProductList/productList.module.css'
 import Image from 'next/image'
@@ -12,6 +13,33 @@ const ProductList = ({ title }) => {
 
   const handleSelect = (item) => {
     router.push(`/product_detail/${item._id}`)
+=======
+import React, { useEffect } from 'react'
+import styles from '@components/ProductList/productList.module.css'
+import Image from 'next/image'
+import mockData from '../../services/mockData'
+import { useSelector } from 'react-redux'
+import { selectedProduct } from '@/redux/slices/selectedProductSlice'
+import { selectProduct } from '@/redux/slices/selectedProductSlice'
+import { listProducts, products } from '@/redux/slices/productSlice'
+import { useDispatch } from 'react-redux'
+import { useRouter } from 'next/router'
+
+const ProductList = ({title}) => {
+  const dispatch = useDispatch()
+  const router = useRouter()
+  const selectedItem = useSelector(selectedProduct)
+  const productList = useSelector(products)
+
+  useEffect(() => {
+    dispatch(listProducts(mockData))
+  },[])
+
+  console.log(productList);
+
+  const handleSelect = (item) => {
+    dispatch(selectProduct(item))
+>>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
   }
 
   return (
@@ -19,6 +47,7 @@ const ProductList = ({ title }) => {
       <h2>{title}</h2>
       <div className={styles.items_list}>
         {
+<<<<<<< HEAD
           products.map((item) => {
             return (
               <div key={item._id}>
@@ -26,6 +55,15 @@ const ProductList = ({ title }) => {
                   (item.productStock > 0) && (
                 <div 
                   onClick={() => {handleSelect(item)}}
+=======
+          productList.products.map((item) => {
+            return (
+              <div key={item.id}>
+                {
+                  (item.productStock > 0) && (
+                <div 
+                  onClick={() => {handleSelect(item); router.push('/product_detail')}}
+>>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
                   className={styles.product_card}
                 >
                   <Image
@@ -50,4 +88,8 @@ const ProductList = ({ title }) => {
   )
 }
 
+<<<<<<< HEAD
 export default ProductList
+=======
+export default ProductList
+>>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656

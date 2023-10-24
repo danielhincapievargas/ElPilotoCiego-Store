@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from '@components/Cart/Cart.module.css'
 import CartProduct from '@components/CartProduct'
+<<<<<<< HEAD
 import { cart } from '@/redux/slices/cartSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { removeFromCart } from '@/redux/slices/cartSlice'
@@ -32,6 +33,14 @@ const Cart = () => {
         className={styles.continue_shopping}
         onClick={() => router.push('/')}
       >Continue shopping</div>
+=======
+
+const Cart = () => {
+  return (
+    <div className={styles.cart_container}>
+      <h2 className={styles.cart_title}>YOUR CART</h2>
+      <div className={styles.continue_shopping}>Continue shopping</div>
+>>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
       <table className={styles.cart_table}>
         <thead>
           <tr>
@@ -42,6 +51,7 @@ const Cart = () => {
           </tr>
         </thead>
         <tbody>
+<<<<<<< HEAD
           {currentCart.cart && currentCart.cart.map((item) => {
             const subtotal = item.productCount * item.productPrice;
             total += subtotal;
@@ -75,10 +85,37 @@ const Cart = () => {
             </tr>
           )
           })}
+=======
+          <tr>
+            <td>
+              <CartProduct />
+            </td>
+            <td className={styles.product_price}>
+              <div className={styles.product_price_value}>{'$30.00'}</div>
+              <div className={styles.price_qty}>
+                <div className={styles.qty}>QTY</div>
+                <div className={styles.price_counter} >
+                  <button>-</button>
+                  <div className={styles.count}>1</div>
+                  <button>+</button>
+                </div>
+              </div>
+            </td>
+            <td className={styles.product_quantity}>
+              <div className={styles.counter}>
+                <button>-</button>
+                <div className={styles.count}>1</div>
+                <button>+</button>
+              </div>
+            </td>
+            <td className={styles.product_total}>{'$30.00'}</td>
+          </tr>
+>>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
         </tbody>
       </table>
       <div className={styles.subtotal}>
         <div className={styles.subtotal_title}>Subtotal</div>
+<<<<<<< HEAD
         <div className={styles.subtotal_value}>{total}</div>
       </div>
       <div className={styles.checkout}>
@@ -86,6 +123,12 @@ const Cart = () => {
           className={styles.checkout_button}
           onClick={() => router.push('/checkout')}
         >Checkout</button>
+=======
+        <div className={styles.subtotal_value}>{'$30.00 USD'}</div>
+      </div>
+      <div className={styles.checkout}>
+        <button className={styles.checkout_button}>Checkout</button>
+>>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
       </div>
     </div>
   )

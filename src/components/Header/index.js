@@ -5,6 +5,7 @@ import { FaRegUserCircle } from 'react-icons/fa'
 import { HiOutlineShoppingBag } from "react-icons/hi2"
 import { Spin as Hamburger } from 'hamburger-react'
 import { useRouter } from 'next/router'
+<<<<<<< HEAD
 import Cookies from 'universal-cookie'
 
 const Header = () => {
@@ -22,6 +23,11 @@ const Header = () => {
     cookies.remove('userRole')
     router.push('/')
   }
+=======
+
+const Header = () => {
+  const router = useRouter()
+>>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
   return (
 
     <div className={styles.header_container}>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from 'react'
 import styles from '@components/Login/login.module.css'
 import { changeForm, form } from '@/redux/slices/formSlice'
@@ -5,10 +6,18 @@ import { getLoggedUser, stateUsers } from '@/redux/slices/usersSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import Cookies from 'universal-cookie'
+=======
+import React from 'react'
+import styles from '@components/Login/login.module.css'
+import { changeForm, form } from '@/redux/slices/formSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { useRouter } from 'next/router'
+>>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
 
 const url = 'http://localhost:8080/auth/local/login'
 
 const Login = () => {
+<<<<<<< HEAD
   const cookies = new Cookies()
   const dispatch = useDispatch()
   const router = useRouter()
@@ -19,6 +28,13 @@ const Login = () => {
   const {userEmail, userPassword} = currentForm.form
 
 
+=======
+  const dispatch = useDispatch()
+  const router = useRouter()
+  const currentForm = useSelector(form)
+  const {userEmail, userPassword} = currentForm.form
+
+>>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
   const handleChange = (e) => {
     const {name, value} = e.target
     dispatch(changeForm({name, value}))
@@ -34,6 +50,7 @@ const Login = () => {
         }       
       });
       const res = await response.json();
+<<<<<<< HEAD
       dispatch(getLoggedUser(res))
 
       return res
@@ -59,11 +76,30 @@ const Login = () => {
   cookies.set('userRole', loggedUser.profile.userRole, { path: "/" })
   
 
+=======
+      console.log('respuesta del login', res);
+      return res 
+    } catch (error) {
+      console.log('Error en fetchLogin', error)
+    }
+  }
+
+  const dataLogin = {userEmail, userPassword}
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    fetchLogin(url, dataLogin)
+  }
+>>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
 
   return (
     <div className={styles.login}>
       <h2>Login</h2>
+<<<<<<< HEAD
       <form onSubmit={(e) => {handleSubmit(e)}}>
+=======
+      <form onSubmit={(e) => {handleSubmit(e); router.push('/')}}>
+>>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
         <div className={styles.form_group}>
           <label htmlFor="email">EMAIL</label>
           <input
@@ -93,7 +129,11 @@ const Login = () => {
           <button type="submit" className={styles.sign_in_button}>Sign In</button>
         </div>
       </form>
+<<<<<<< HEAD
       <div className={styles.create_account} onClick={(e) => {handleSubmit(e); router.push('/create_account')}}>Create account</div>
+=======
+      <div className={styles.create_account}>Create account</div>
+>>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
     </div>
   )
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from '@components/DeliveryForm/deliveryForm.module.css'
+<<<<<<< HEAD
 import { useRouter } from 'next/router'
 import { changeDeliveryForm, form } from '@/redux/slices/formSlice'
 import { useDispatch, useSelector } from 'react-redux'
@@ -24,11 +25,16 @@ const DeliveryForm = () => {
     dispatch(changeDeliveryForm({name, value}))
   }
 
+=======
+
+const DeliveryForm = () => {
+>>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
   return (
     <div className={styles.delivery_form}>
 
       <h2 className={styles.contact}>CONTACT</h2>
       <div className={styles.form_group}>
+<<<<<<< HEAD
         <label htmlFor="orderEmail">EMAIL</label>
         <input
           id="orderEmail"
@@ -42,11 +48,17 @@ const DeliveryForm = () => {
         <div className={styles.have_account}>Have an account? 
           <span onClick={() => router.push('/login')}>Login</span>
         </div>
+=======
+        <label htmlFor="email">EMAIL</label>
+        <input id="email" type="email" placeholder="Enter your email" required />
+        <div className={styles.have_account}>Have an account? <span>Login</span></div>
+>>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
       </div>
 
       <h2 className={styles.delivery}>DELIVERY</h2>
 
       <div className={styles.form_group}>
+<<<<<<< HEAD
         <label htmlFor="orderCountry">COUNTRY</label>
         <input
           id="orderCountry"
@@ -57,10 +69,15 @@ const DeliveryForm = () => {
           value={orderCountry}
           onChange={handleChange}
         />
+=======
+        <label htmlFor="first_name">COUNTRY</label>
+        <input id="first_name" type="text" placeholder="" required />
+>>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
       </div>
 
       <div className={styles.groups}>
         <div className={styles.group}>
+<<<<<<< HEAD
           <label htmlFor="orderFirstName">FIRST NAME</label>
           <input
             id="orderFirstName"
@@ -83,10 +100,19 @@ const DeliveryForm = () => {
             value={orderLastName}
             onChange={handleChange}
           />
+=======
+          <label htmlFor="first_name">FIRST NAME</label>
+          <input id="first_name" type="text" placeholder="First name" required />
+        </div>
+        <div className={styles.group}>
+          <label htmlFor="last_name">LAST NAME</label>
+          <input id="last_name" type="text" placeholder="Last name" required />
+>>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
         </div>
       </div>
       
       <div className={styles.form_group}>
+<<<<<<< HEAD
         <label htmlFor="orderAddress">ADDRESS</label>
         <input
           id="orderAddress"
@@ -97,10 +123,15 @@ const DeliveryForm = () => {
           value={orderAddress}
           onChange={handleChange}
         />
+=======
+        <label htmlFor="first_name">ADDRESS</label>
+        <input id="first_name" type="text" placeholder="" required />
+>>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
       </div>
 
       <div className={styles.groups}>
         <div className={styles.group}>
+<<<<<<< HEAD
           <label htmlFor="orderCity">CITY</label>
           <input
             id="orderCity"
@@ -122,10 +153,19 @@ const DeliveryForm = () => {
             value={orderPostcode}
             onChange={handleChange}
           />
+=======
+          <label htmlFor="city">CITY</label>
+          <input id="city" type="text" placeholder="" required />
+        </div>
+        <div className={styles.group}>
+          <label htmlFor="postcode">POSTCODE</label>
+          <input id="postcode" type="text" placeholder="" required />
+>>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
         </div>
       </div>
 
       <div className={styles.form_group}>
+<<<<<<< HEAD
         <label htmlFor="orderPhone">PHONE</label>
         <input
           id="orderPhone"
@@ -136,6 +176,10 @@ const DeliveryForm = () => {
           value={orderPhone}
           onChange={handleChange}
         />
+=======
+        <label htmlFor="phone">PHONE</label>
+        <input id="phone" type="text" placeholder="" required />
+>>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
       </div>
   </div>
   )

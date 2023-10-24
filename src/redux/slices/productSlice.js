@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+<<<<<<< HEAD
 import { HYDRATE } from "next-redux-wrapper";
 
 const initialState = {
@@ -6,6 +7,11 @@ const initialState = {
   product: {},
   error: null,
   status: 'idle'
+=======
+
+const initialState = {
+  products: [], 
+>>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
 }
 
 const productsSlice = createSlice({
@@ -15,6 +21,7 @@ const productsSlice = createSlice({
     listProducts: (state, { payload }) => {
       state.products = payload
     },
+<<<<<<< HEAD
     listSingleProduct: (state, { payload }) => {
       state.product = payload
     },
@@ -62,5 +69,13 @@ export const getSingleProduct = (productId) => async (dispatch) => {
       dispatch(setError(error.message))
   }
 }
+=======
+  }
+})
+  
+export const { listProducts } = productsSlice.actions
+
+export const products = state => state.products
+>>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
 
 export default productsSlice.reducer

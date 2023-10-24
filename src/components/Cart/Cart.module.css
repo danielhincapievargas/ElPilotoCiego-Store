@@ -62,9 +62,12 @@
 .price_qty .qty{
   margin-right: 10px;
 }
+<<<<<<< HEAD
 .quantity_title{
   margin-right: 10px;
 }
+=======
+>>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
 
 .price_counter{
   width: 50px;
@@ -73,6 +76,7 @@
   border: 1px solid white;
 }
 
+<<<<<<< HEAD
 .cart_product{
   position: relative;
 }
@@ -88,6 +92,8 @@
   cursor: pointer;
 }
 
+=======
+>>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
 .product_price_value{
   text-align: right;
 }
@@ -121,11 +127,18 @@
 }
 
 .checkout{
+<<<<<<< HEAD
+=======
+  cursor: pointer;
+>>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
   display: flex;
 }
 
 .checkout_button{
+<<<<<<< HEAD
   cursor: pointer;
+=======
+>>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
   font-size: 20px;
   font-weight: 300;
   letter-spacing: 1px;

@@ -32,9 +32,16 @@ const CreateAccount = () => {
         body: JSON.stringify(data)
       });
       const res = await response.json();
+<<<<<<< HEAD
       return res 
     } catch (error) {
       alert('Error en fetchCreateAccount', error)
+=======
+      console.log('respuesta del Create Account', res);
+      return res 
+    } catch (error) {
+      console.log('Error en fetchCreateAccount', error)
+>>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
     }
   }
 
@@ -101,7 +108,10 @@ const CreateAccount = () => {
           <button type="submit" className={styles.create_button}>Create</button>
         </div>
       </form>
+<<<<<<< HEAD
       <div className={styles.login} onClick={(e) => {handleSubmit(e); router.push('/login')}}>Login</div>
+=======
+>>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
     </div>
   )
 }

@@ -24,7 +24,10 @@
   border: solid 1px white;
   padding: 5px 10px;
   transition: all 0.5s ease;
+<<<<<<< HEAD
   margin-bottom: 30px;
+=======
+>>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
 }
 
 .add_button:hover{
@@ -48,7 +51,11 @@
 .product_table tbody td{
   border-bottom: 1px solid white;
   text-align: left;
+<<<<<<< HEAD
   padding: 10px 0;
+=======
+  padding: 20px 0;
+>>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
 }
 
 .product_name{

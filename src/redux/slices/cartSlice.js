@@ -14,6 +14,7 @@ const cartSlice = createSlice({
         payload
       ]
     },
+<<<<<<< HEAD
     removeFromCart: (state, action) => {
       const { productName, productSize } = action.payload;
       state.cart = state.cart.filter(item => (
@@ -24,11 +25,20 @@ const cartSlice = createSlice({
 })
   
 export const { addToCart, removeFromCart } = cartSlice.actions
+=======
+  }
+})
+  
+export const { addToCart } = cartSlice.actions
+>>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
 
 export const cart = state => state.cart
 
 export default cartSlice.reducer
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
