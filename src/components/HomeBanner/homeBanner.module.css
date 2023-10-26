@@ -1,20 +1,12 @@
 
 .banner_container{
-<<<<<<< HEAD
   margin-top: 118px;
-=======
-  margin-top: 150px;
->>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
 }
 .banner_container h2{
   text-align: center;
   font-style: italic;
   font-weight: 200;
-<<<<<<< HEAD
   font-size: 24px;
-=======
-  font-size: 30px;
->>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
   letter-spacing: 2px;
   margin-bottom: 12px;
 }

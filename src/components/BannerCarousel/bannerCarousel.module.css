@@ -1,10 +1,6 @@
 .slider_container {
   margin: 0 auto;
-<<<<<<< HEAD
   width: 330px;
-=======
-  width: 375px;
->>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
 }
 
 .single_slide{
@@ -13,18 +9,10 @@
 
 @media screen and (min-width: 900px) {
   .slider_container {
-<<<<<<< HEAD
     width: 330px;
   }
   .slide_img{
     width: 330px;
     height: 330px;
-=======
-    width: 500px;
-  }
-  .slide_img{
-    width: 500px;
-    height: 500px;
->>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
   }
 }

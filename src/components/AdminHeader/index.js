@@ -2,10 +2,6 @@ import React from 'react'
 import styles from '@components/AdminHeader/adminHeader.module.css'
 import Image from 'next/image'
 import { FaRegUserCircle } from 'react-icons/fa'
-<<<<<<< HEAD
-=======
-import { HiOutlineShoppingBag } from "react-icons/hi2"
->>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
 import { Spin as Hamburger } from 'hamburger-react'
 import { useRouter } from 'next/router'
 
@@ -28,10 +24,7 @@ const AdminHeader = () => {
       <div className={styles.middle_block}>|</div>
       <Image
         className={styles.logo}
-<<<<<<< HEAD
         onClick={() => router.push('/')}
-=======
->>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
         src="/elpiloto-logo.png"
         alt="El Piloto Ciego Logo"
         width={200}
@@ -45,11 +38,7 @@ const AdminHeader = () => {
           <li onClick={() =>router.push('/admin/users')}>USERS</li>
           <li onClick={() =>router.push('/admin/newsletter')}>NEWSLETTER</li>
         </ul>
-<<<<<<< HEAD
         <div className={styles.admin}>ADMIN</div>
-=======
-        <HiOutlineShoppingBag onClick={() =>router.push('/cart')} className={styles.cart_icon} />
->>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
         <div className={styles.hamburger}>
           <Hamburger
             size={20}

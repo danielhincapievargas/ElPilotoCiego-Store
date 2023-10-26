@@ -27,13 +27,8 @@ const BannerCarousel = () => {
               className={styles.slide_img}
               src="/epc-1frontcover.jpg"
               alt="front cover"
-<<<<<<< HEAD
               width={330}
               height={330}
-=======
-              width={375}
-              height={375}
->>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
               priority
             />
           </div>
@@ -42,13 +37,8 @@ const BannerCarousel = () => {
               className={styles.slide_img}
               src="/epc-mock_page1.jpg"
               alt="front cover"
-<<<<<<< HEAD
               width={330}
               height={330}
-=======
-              width={375}
-              height={375}
->>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
               priority
             />
           </div>
@@ -57,13 +47,8 @@ const BannerCarousel = () => {
               className={styles.slide_img}
               src="/epc-mock_page2.jpg"
               alt="front cover"
-<<<<<<< HEAD
               width={330}
               height={330}
-=======
-              width={375}
-              height={375}
->>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
               priority
             />
           </div>
@@ -72,13 +57,8 @@ const BannerCarousel = () => {
               className={styles.slide_img}
               src="/epc-xbackcover.jpg"
               alt="front cover"
-<<<<<<< HEAD
               width={330}
               height={330}
-=======
-              width={375}
-              height={375}
->>>>>>> f9f2c2662b8b9a89429ca188bb31e14d50709656
               priority
             />
           </div>
