@@ -163,14 +163,25 @@ const AdminProductDetail = ({action}) => {
           <div className={styles.image_group}>
             <h2>PRODUCT IMAGE</h2>
             
-          {!image && <Image 
+          {!image && action === "edit"
+          ? <Image 
               className={styles.product_img}
               src={product.productImage}
               alt={product.productType}
               width={300}
               height={300}
               priority
-            /> }
+            />
+          : !image &&
+            <Image 
+              className={styles.product_img}
+              src='/no_img.jpg'
+              alt='No Image'
+              width={300}
+              height={300}
+              priority
+            />
+            }
           {image && <Image 
               className={styles.product_img}
               src={image}
