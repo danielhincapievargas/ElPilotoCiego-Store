@@ -80,7 +80,9 @@
   z-index: 99;
 }
 
-
+.hamburger{
+  z-index: 999;
+}
 
 @media screen and (min-width: 500px) {
   .header{
