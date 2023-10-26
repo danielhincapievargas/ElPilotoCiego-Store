@@ -6,13 +6,19 @@ import { HiOutlineShoppingBag } from "react-icons/hi2"
 import { Spin as Hamburger } from 'hamburger-react'
 import { useRouter } from 'next/router'
 import Cookies from 'universal-cookie'
+import MobileMenu from '@components/MobileMenu'
 
 const Header = () => {
+  const [mobileMenu, setMobileMenu] = useState(false)
   const router = useRouter()
   const cookies = new Cookies()
 
   const token = cookies.get('token')
   const role = cookies.get('userRole')
+
+  const handleClick = () => {
+    setMobileMenu(!mobileMenu)
+  }
 
   const handleLogout = () => {
     cookies.remove('token')
@@ -72,7 +78,7 @@ const Header = () => {
             <li>ABOUT</li>
           </ul>
           <HiOutlineShoppingBag onClick={() =>router.push('/cart')} className={styles.cart_icon} />
-          <div className={styles.hamburger}>
+          <div onClick={handleClick} className={styles.hamburger}>
             <Hamburger
               size={20}
               direction="right"
@@ -81,8 +87,10 @@ const Header = () => {
               color="#fff" 
             />
           </div>
-
+          <MobileMenu isOpen={mobileMenu} />
         </div>
+
+
       </div>
     </div>
 
