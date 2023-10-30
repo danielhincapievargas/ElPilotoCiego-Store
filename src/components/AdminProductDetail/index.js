@@ -13,7 +13,8 @@ const AdminProductDetail = ({action}) => {
   const [type, setType] = useState('')
   const dispatch = useDispatch()
 
-  const url = `http://localhost:8080/api/products/${product._id}`
+  const urlUpdate = `http://localhost:8080/api/products/${product._id}`
+  const urlAdd = "http://localhost:8080/api/products/"
 
 
 
@@ -114,6 +115,8 @@ const AdminProductDetail = ({action}) => {
       [name]: value,
     }
 
+    console.log(updatedProduct);
+
     dispatch(listSingleProduct(updatedProduct))
   }
 
@@ -130,8 +133,21 @@ const AdminProductDetail = ({action}) => {
       alert('Error en fetchImg', error)
     }
   }
+  const fetchAddProduct = async (url, data) => {
+    console.log("Entré al fetchAdd");
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        body: data, 
+      });
+      const res = await response.json();
+      return res
+    } catch (error) {
+      alert('Error en fetchImg', error)
+    }
+  }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e, action) => {
     e.preventDefault()
 
     const data = new FormData
@@ -140,25 +156,43 @@ const AdminProductDetail = ({action}) => {
     data.append('productPrice', product.productPrice);
     data.append('productType', product.productType);
     data.append('productStock', product.productStock);
-    data.append('productName', product.productName)
     data.append('productFeatured', product.productFeatured);
-    data.append('productImage', file, file.name)
 
-    product.productSizes.forEach((sizeObj, index) => {
+    if((image && action === "add") || (image && action === "edit")){
+      data.append('productImage', file, file.name)
+    }
+    if(!image && action === "add"){
+      data.append('productImage', '/no_img.jpg')
+    }
+    if(!image && action === "edit"){
+      data.append('productImage', product.productImage)
+    }
+
+    console.log("kjasndfjjn");
+
+    /* product.productSizes.forEach((sizeObj, index) => {
       const sizeKey = `productSizes[${index}]`;
       data.append(`${sizeKey}[size]`, sizeObj.size);
       data.append(`${sizeKey}[stock]`, sizeObj.stock);
-    });
+    }); */
 
-    await fetchUpdateProduct(url, data)
-    return alert('petición')
+    if(action === "edit"){
+      await fetchUpdateProduct(urlUpdate, data)
+      return alert('editar producto')
+    }
+
+    if(action ==="add"){
+      await fetchAddProduct(urlAdd, data)
+      return alert('agregar producto')
+    }
+
 }
 
   return (
     <div className={styles.add_product_container}>
 
 
-        <form onSubmit={handleSubmit} className={styles.admin_product}>
+        <form className={styles.admin_product}>
 
           <div className={styles.image_group}>
             <h2>PRODUCT IMAGE</h2>
@@ -192,7 +226,7 @@ const AdminProductDetail = ({action}) => {
             />}
             <input
               type="file"
-              name="file"
+/*               name="file" */
               multiple={true}
               accept='image/*'
               onChange={ handleChangeImg }
@@ -325,22 +359,31 @@ const AdminProductDetail = ({action}) => {
 
               <div className={styles.group}>
                 <label htmlFor="featured">FEATURED?</label>
-                <select defaultValue={product.productFeatured} id="featured" type="text" placeholder="" required>
-                  <option value="Yes">Yes</option>
-                  <option value="No">No</option>
+                <select 
+                  defaultValue={product ? product.productFeatured : false}
+                  id="featured"
+                  type="text"
+                  placeholder=""
+                  required
+                  onChange={(e) => handleChange(e)}
+                  value={product.productFeatured}
+                  name="productFeatured"
+                >
+                  <option value={true}>Yes</option>
+                  <option value={false}>No</option>
                 </select>
               </div>
             </div>
 
             {action === 'add' && (
               <div className={styles.add_product}>
-                <button className={styles.add_button}>ADD PRODUCT</button>
+                <button onClick={(e) => handleSubmit(e, 'add')} className={styles.add_button}>ADD PRODUCT</button>
               </div>
             )}
 
             {action === 'edit' && 
               <div className={styles.edit_product}>
-                <button className={styles.edit_button}>SAVE CHANGES</button>
+                <button onClick={(e) => handleSubmit(e, 'edit')} className={styles.edit_button}>SAVE CHANGES</button>
               </div>
             }
           </div>
