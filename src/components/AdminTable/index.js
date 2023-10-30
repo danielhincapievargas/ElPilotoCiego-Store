@@ -11,6 +11,28 @@ export const AdminTable = () => {
   const handleSelect = (product) => {
     router.push(`/admin/products/${product._id}`)
   }
+
+
+  const fetchDeleteProduct = async (url) => {
+
+    try {
+      const response = await fetch(url, {
+        method: 'DELETE',
+      });
+      const res = await response.json();
+      return res
+    } catch (error) {
+      alert('Error en Deleting Product', error)
+    }
+  }
+
+  const handleDelete = async (product) => {
+    const url = `http://localhost:8080/api/products/${product._id}`
+
+    await fetchDeleteProduct(url)
+    router.push('/admin/products/')
+  }
+
   return (
     <div className={styles.product_container}>
       <h2 className={styles.product_title}>PRODUCTS</h2>
@@ -59,7 +81,7 @@ export const AdminTable = () => {
                     onClick={() => {handleSelect(product)}}
                   >Edit</span>
                   <span>  |  </span>
-                  <span className={styles.delete_product}>Delete</span>
+                  <span className={styles.delete_product} onClick={() => {handleDelete(product)}}>Delete</span>
                 </div>
               </div>
             </td>
@@ -72,7 +94,7 @@ export const AdminTable = () => {
             <td className={styles.actions}>
               <span className={styles.edit_product} onClick={() => {handleSelect(product)}}>Edit</span>
               <span>  |  </span>
-              <span className={styles.delete_product}>Delete</span>
+              <span className={styles.delete_product} onClick={() => {handleDelete(product)}}>Delete</span>
             </td>
           </tr>
         )
