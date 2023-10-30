@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { useSelector } from 'react-redux'
 import { stateProducts } from '@/redux/slices/productSlice'
 import { useRouter } from 'next/router'
+import formatPrice from '@/services/formatPrice'
 
 
 const ProductList = ({ title }) => {
@@ -37,7 +38,7 @@ const ProductList = ({ title }) => {
                     priority
                   />
                   <div className={styles.product_name}>{item.productName}</div>
-                  <div className={styles.product_price}>{item.productPrice}</div>
+                  <div className={styles.product_price}>{formatPrice(item.productPrice)}</div>
                 </div>
                   ) 
                 }

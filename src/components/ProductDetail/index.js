@@ -13,6 +13,7 @@ import {
   decrementCount
 } from '@/redux/slices/selectedProductSlice'
 import { addToCart, cart } from '@/redux/slices/cartSlice'
+import formatPrice from '@/services/formatPrice'
 
 const ProductDetail = () => {
   const selectedItem = useSelector(selectedProduct);;
@@ -138,7 +139,7 @@ const ProductDetail = () => {
   
           <div className={styles.product_tags}>
             <div className={styles.product_name}>{product.productName}</div>
-            <div className={styles.product_price}>{product.productPrice}</div>
+            <div className={styles.product_price}>{formatPrice(product.productPrice)}</div>
           </div>
   
           {(product.productType === 'Tee' || product.productType === 'Hoodie')
