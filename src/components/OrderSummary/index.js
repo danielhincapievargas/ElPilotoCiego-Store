@@ -3,6 +3,7 @@ import styles from '@components/OrderSummary/orderSummary.module.css'
 import CartProduct from '../CartProduct'
 import { cart } from '@/redux/slices/cartSlice'
 import { useSelector } from 'react-redux'
+import formatPrice from '@/services/formatPrice'
 
 const OrderSummary = () => {
   const currentCart = useSelector(cart)
@@ -26,14 +27,14 @@ const OrderSummary = () => {
               productSize={item.productSize}
               productCount={item.productCount}
             />
-            <div>{item.productPrice * item.productCount}</div>
+            <div>{formatPrice(item.productPrice * item.productCount)}</div>
           </div>
         </div>
         )
       })}
       <div className={styles.order_total}>
         <div className={styles.total_title}>Total</div>
-        <div>{total}</div>
+        <div>{formatPrice(total)}</div>
       </div>
     </div>
   )
