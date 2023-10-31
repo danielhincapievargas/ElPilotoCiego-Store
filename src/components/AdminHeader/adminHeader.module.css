@@ -56,7 +56,7 @@
 }
 
 .right_header .admin{
-  font-size: 20px;
+  font-size: 14px;
 }
 
 .right_header ul {
@@ -80,6 +80,9 @@
 @media screen and (min-width: 500px) {
   .header{
     padding: 0 20px;
+  }
+  .right_header .admin{
+    font-size: 20px;
   }
 }
 

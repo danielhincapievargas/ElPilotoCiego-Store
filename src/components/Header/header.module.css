@@ -31,7 +31,7 @@
   font-size: 30px;
 }
 
-.left_header .user_icon{
+.left_header .user_icon, .left_header .user_icon_mobile{
   cursor: pointer;
   min-width: 30px;
   margin-bottom: 8px;
@@ -83,17 +83,38 @@
 .hamburger{
   z-index: 999;
 }
+.logged_card{
+  display: none;
+}
+.user_icon{
+  display: none;
+}
+
+.login_container{
+  display: flex;
+  align-items: center;
+}
+.user_icon_mobile{
+  display: block;
+  z-index: 999;
+}
+
+
 
 @media screen and (min-width: 500px) {
   .header{
     padding: 0 20px;
   }
+  
+}
+
+@media screen and (min-width: 840px) {
 
   .login_container{
     position: relative;
     display: flex;
-  }
-
+  } 
+  
   .logged_card{
     display: none;
     opacity: 0;
@@ -103,7 +124,7 @@
     border: 1px solid white;
     transition: opacity 0.5s ease-in-out;
   }
-
+  
   .login_container:hover .logged_card{
     display: flex;
     flex-direction: column;
@@ -115,17 +136,13 @@
     padding: 10px 5px;
     transition-delay: 1s;
   }
-
+  
   .logged_list_tag{
     cursor: pointer;
   }
   .logged_list_tag:hover{
     color: #e72076;
   }
-  
-}
-
-@media screen and (min-width: 840px) {
 
   .header{
     margin: 0 auto;
@@ -151,6 +168,13 @@
   }
   .left_header ul li:hover, .user_icon:hover, .cart_icon:hover{
     color: #e72076;
+  }
+
+  .user_icon{
+    display: block;
+  }
+  .user_icon_mobile{
+    display: none;
   }
 
   .right_header {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from '@components/Header/header.module.css'
 import Image from 'next/image'
 import { FaRegUserCircle } from 'react-icons/fa'
@@ -7,13 +7,23 @@ import { Spin as Hamburger } from 'hamburger-react'
 import { useRouter } from 'next/router'
 import Cookies from 'universal-cookie'
 import MobileMenu from '@components/MobileMenu'
+import MobileUserMenu from '@components/MobileUserMenu'
+import { getLoggedUser } from '@/redux/slices/usersSlice'
+import { useDispatch } from 'react-redux'
 
 const Header = () => {
+  const [loggedCard, setLoggedCard] = useState(false)
   const [mobileMenu, setMobileMenu] = useState(false)
+  const [token, setToken] = useState('')
+  const dispatch = useDispatch()
   const router = useRouter()
   const cookies = new Cookies()
 
-  const token = cookies.get('token')
+  useEffect(() => {
+    setToken(cookies.get('token'))
+  },[])
+
+
   const role = cookies.get('userRole')
 
   const handleClick = () => {
@@ -26,8 +36,20 @@ const Header = () => {
     cookies.remove('userLastName')
     cookies.remove('userEmail')
     cookies.remove('userRole')
+    setToken('')
+    dispatch(getLoggedUser({
+      profile: {
+        userEmail: "",
+        userFirstName: "",
+        userLastName: "",
+        userRole: ""
+      },
+      token: ""
+  }))
     router.push('/')
   }
+
+  console.log(token);
   return (
 
     <div className={styles.header_container}>
@@ -36,6 +58,8 @@ const Header = () => {
         <div className={styles.left_header}>
           <div className={styles.login_container}>
             <FaRegUserCircle className={styles.user_icon} onClick={() => token ? undefined : router.push('/login')} />
+            <FaRegUserCircle className={styles.user_icon_mobile} onClick={() => token ? setLoggedCard(!loggedCard) : router.push('/login')} />
+
             {token && (
               <div className={styles.logged_card}>
                 <div className={styles.logged_list}>
@@ -46,7 +70,12 @@ const Header = () => {
                   >Logout</div>
                   {
                     (role === 'ADMIN') && (
-                      <div className={styles.logged_list_tag} onClick={() =>router.push('/admin/products')}>Dashboard</div>
+                      <div
+                        className={styles.logged_list_tag}
+                        onClick={() =>router.push('/admin/products')}
+                      >
+                      Dashboard
+                      </div>
                     )
                   }
                 </div>
@@ -57,6 +86,8 @@ const Header = () => {
             <li onClick={() => router.push('/apparel')}>APPAREL</li>
             <li onClick={() =>router.push('/accesories')}>ACCESORIES</li>
           </ul>
+
+          <MobileUserMenu mobileOpen={loggedCard}/>
 
         </div>
 
