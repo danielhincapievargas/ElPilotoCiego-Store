@@ -5,7 +5,7 @@ import ProductList from '@/components/ProductList'
 const ApparelPage = () => {
   return (
     <Layout>
-      <ProductList title={'APPAREL'}/>
+      <ProductList title={'APPAREL'} page={'Apparel'}/>
     </Layout>
   )
 }

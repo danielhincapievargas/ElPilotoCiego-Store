@@ -5,7 +5,7 @@ import ProductList from '@/components/ProductList'
 const MusicPage = () => {
   return (
     <Layout>
-      <ProductList title={'MUSIC'}/>
+      <ProductList title={'MUSIC'} page={'Music'}/>
     </Layout>
   )
 }
