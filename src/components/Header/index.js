@@ -8,23 +8,16 @@ import { useRouter } from 'next/router'
 import Cookies from 'universal-cookie'
 import MobileMenu from '@components/MobileMenu'
 import MobileUserMenu from '@components/MobileUserMenu'
-import { getLoggedUser } from '@/redux/slices/usersSlice'
-import { useDispatch } from 'react-redux'
+import { getLoggedUser, stateUsers } from '@/redux/slices/usersSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
 const Header = () => {
   const [loggedCard, setLoggedCard] = useState(false)
   const [mobileMenu, setMobileMenu] = useState(false)
-  const [token, setToken] = useState('')
+  const { loggedUser } = useSelector(stateUsers)
   const dispatch = useDispatch()
   const router = useRouter()
   const cookies = new Cookies()
-
-  useEffect(() => {
-    setToken(cookies.get('token'))
-  },[])
-
-
-  const role = cookies.get('userRole')
 
   const handleClick = () => {
     setMobileMenu(!mobileMenu)
@@ -36,7 +29,6 @@ const Header = () => {
     cookies.remove('userLastName')
     cookies.remove('userEmail')
     cookies.remove('userRole')
-    setToken('')
     dispatch(getLoggedUser({
       profile: {
         userEmail: "",
@@ -49,7 +41,6 @@ const Header = () => {
     router.push('/')
   }
 
-  console.log(token);
   return (
 
     <div className={styles.header_container}>
@@ -57,10 +48,10 @@ const Header = () => {
 
         <div className={styles.left_header}>
           <div className={styles.login_container}>
-            <FaRegUserCircle className={styles.user_icon} onClick={() => token ? undefined : router.push('/login')} />
-            <FaRegUserCircle className={styles.user_icon_mobile} onClick={() => token ? setLoggedCard(!loggedCard) : router.push('/login')} />
+            <FaRegUserCircle className={styles.user_icon} onClick={() => loggedUser.token ? undefined : router.push('/login')} />
+            <FaRegUserCircle className={styles.user_icon_mobile} onClick={() => loggedUser.token ? setLoggedCard(!loggedCard) : router.push('/login')} />
 
-            {token && (
+            {loggedUser.token && (
               <div className={styles.logged_card}>
                 <div className={styles.logged_list}>
                   <div className={styles.logged_list_tag}>Profile</div>
@@ -69,12 +60,12 @@ const Header = () => {
                     onClick={handleLogout} 
                   >Logout</div>
                   {
-                    (role === 'ADMIN') && (
+                    (loggedUser.profile.userRole === 'ADMIN') && (
                       <div
                         className={styles.logged_list_tag}
                         onClick={() =>router.push('/admin/products')}
                       >
-                      Dashboard
+                      DASHBOARD
                       </div>
                     )
                   }
