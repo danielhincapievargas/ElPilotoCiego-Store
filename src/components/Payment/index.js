@@ -1,7 +1,9 @@
 import React from 'react'
 import styles from '@components/Payment/payment.module.css'
+import { useRouter } from 'next/router'
 
 const Payment = () => {
+  const router = useRouter()
   return (
     <div className={styles.payment_form}>
 
@@ -29,7 +31,7 @@ const Payment = () => {
       </div>
 
       <div className={styles.payment_submit}>
-        <button className={styles.payment_button} type="submit">MAKE PAYMENT</button>
+        <button onClick={() => router.push('/successful_payment')} className={styles.payment_button} type="submit">MAKE PAYMENT</button>
       </div>
 
   </div>
