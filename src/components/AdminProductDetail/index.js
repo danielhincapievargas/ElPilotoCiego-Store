@@ -141,6 +141,7 @@ const AdminProductDetail = ({action}) => {
         body: data, 
       });
       const res = await response.json();
+      console.log('res', res);
       return res
     } catch (error) {
       alert('Error en fetchImg', error)

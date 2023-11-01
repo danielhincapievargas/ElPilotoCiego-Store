@@ -7,7 +7,7 @@ import { useRouter } from 'next/router'
 import formatPrice from '@/services/formatPrice'
 
 
-const ProductList = ({ title }) => {
+const ProductList = ({ title, page }) => {
   const router = useRouter()
   const { products } = useSelector(stateProducts)
 
@@ -15,12 +15,32 @@ const ProductList = ({ title }) => {
     router.push(`/product_detail/${item._id}`)
   }
 
+let filteredProducts;
+
+if (page === 'Home') {
+
+  filteredProducts = products;
+
+} else if (page === 'Apparel') {
+
+  filteredProducts = products.filter(product => {
+    return product.productType === 'Tee' || product.productType === 'Hoodie';
+  });
+
+} else if (page === 'Music') {
+
+  filteredProducts = products.filter(product => {
+    return product.productType === 'CD' || product.productType === 'LP';
+  });
+
+}
+
   return (
     <div className={styles.featured_items}>
       <h2>{title}</h2>
       <div className={styles.items_list}>
         {
-          products.map((item) => {
+          filteredProducts.map((item) => {
             return (
               <div key={item._id}>
                 {

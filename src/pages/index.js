@@ -11,7 +11,7 @@ const Home = () => {
     <>
       <Layout>
         <HomeBanner />
-        <ProductList title={'FEATURED ITEMS'} />
+        <ProductList title={'FEATURED ITEMS'} page={'Home'} />
       </Layout>
     </>
   )
