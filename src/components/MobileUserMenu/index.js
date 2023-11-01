@@ -2,19 +2,15 @@ import React, { useState, useEffect } from 'react'
 import styles from '@components/MobileUserMenu/mobileUserMenu.module.css'
 import { useRouter } from 'next/router'
 import Cookies from 'universal-cookie'
-import { getLoggedUser } from '@/redux/slices/usersSlice'
-import { useDispatch } from 'react-redux'
+import { getLoggedUser, stateUsers } from '@/redux/slices/usersSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
 const MobileUserMenu = ({mobileOpen}) => {
-  const [token, setToken] = useState('')
+
   const router = useRouter()
   const cookies = new Cookies()
+  const { loggedUser } = useSelector(stateUsers)
   const dispatch = useDispatch()
-  const role = cookies.get('userRole')
-
-  useEffect(() => {
-    setToken(cookies.get('token'))
-  },[])
 
   const handleLogout = () => {
     cookies.remove('token')
@@ -22,7 +18,7 @@ const MobileUserMenu = ({mobileOpen}) => {
     cookies.remove('userLastName')
     cookies.remove('userEmail')
     cookies.remove('userRole')
-    setToken('')
+
     dispatch(getLoggedUser({
       profile: {
         userEmail: "",
@@ -37,17 +33,17 @@ const MobileUserMenu = ({mobileOpen}) => {
 
   return (
     <>
-    {token && <div className={mobileOpen ? `${styles.menu_overlay_user} ${styles.open_user}` : `${styles.menu_overlay_user} ${styles.closed_user}`}>
+    {loggedUser.token && <div className={mobileOpen ? `${styles.menu_overlay_user} ${styles.open_user}` : `${styles.menu_overlay_user} ${styles.closed_user}`}>
       <div className={styles.menu_user}>
         <div onClick={() =>router.push('/')} className={styles.item_user}>PROFILE</div>
         <div onClick={handleLogout} className={styles.item_user}>LOGOUT</div>
         {
-          (role === 'ADMIN') && (
+          (loggedUser.profile.userRole === 'ADMIN') && (
             <div
               className={styles.item_user}
               onClick={() =>router.push('/admin/products')}
             >
-            Dashboard
+            DASHBOARD
             </div>
           )
         }
