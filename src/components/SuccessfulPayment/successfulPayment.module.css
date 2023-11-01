@@ -1,0 +1,47 @@
+.successful_container{
+  margin-top: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.successful_payment{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.successful_payment h2{
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+.successful_payment button{
+  margin-top: 40px;
+  cursor: pointer;
+  border: solid 1px white;
+  padding: 8px 12px;
+  transition: all 0.5s ease;
+  margin-bottom: 30px;
+  font-size: 18px;
+}
+
+.successful_payment button:hover{
+  background-color: white;
+  color: black;
+}
+
+@media screen and (min-width: 500px) {
+
+  .successful_payment h2{
+    font-size: 32px;
+  }
+
+}
+
+@media screen and (min-width: 1000px) {
+  .successful_container{
+    margin-top: 18%;
+  }
+}
