@@ -1,4 +1,5 @@
 .product_container{
+  position: relative;
   width: 100%;
   margin: 120px auto;
   max-width: 1000px;
@@ -93,6 +94,25 @@
 .actions
 {
   display: none;
+}
+
+.cancel_buttons{
+  display: flex;
+}
+.cancel_buttons button{
+  cursor: pointer;
+  width: 80px;
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 2px;
+  margin: 0px 24px;
+  border: solid 1px gray;
+  padding: 5px 10px;
+  transition: border 0.1s ease-in-out;
+}
+
+.cancel_buttons button:hover{
+  border: solid 1px white;
 }
 
 @media screen and (min-width: 600px){
