@@ -10,6 +10,7 @@ export const AdminTable = () => {
   const { products } = useSelector(stateProducts)
   const [modal, setModal] = useState(false)
   const router = useRouter()
+
   const handleSelect = (product) => {
     router.push(`/admin/products/${product._id}`)
   }
@@ -64,7 +65,7 @@ export const AdminTable = () => {
                 <Image 
                   className={styles.product_img}
                   src={product.productImage}
-                  alt={product.productType}
+                  alt='product img'
                   width={100}
                   height={100}
                   priority
@@ -99,13 +100,13 @@ export const AdminTable = () => {
                 <span className={styles.edit_product} onClick={() => {handleSelect(product)}}>Edit</span>
                 <span>  |  </span>
                 <span className={styles.delete_product} onClick={() => setModal(true)}>Delete</span>
+                <Modal isOpen={modal} title={'DELETE'} text={'ARE YOU SURE YOU WANT TO DELETE THIS PRODUCT?'}>
+                  <div className={styles.cancel_buttons}> 
+                    <button onClick={() => {handleDelete(product)}}>YES</button>
+                    <button onClick={() => setModal(false)}>CANCEL</button>
+                  </div>
+                </Modal>
               </td>
-              <Modal isOpen={modal} title={'DELETE'} text={'ARE YOU SURE YOU WANT TO DELETE THIS PRODUCT?'}>
-                <div className={styles.cancel_buttons}> 
-                  <button onClick={() => {handleDelete(product)}}>YES</button>
-                  <button onClick={() => setModal(false)}>CANCEL</button>
-                </div>
-              </Modal>
             </tr>
           )
             })}
