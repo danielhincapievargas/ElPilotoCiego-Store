@@ -187,8 +187,14 @@ const AdminProductDetail = ({action}) => {
     }
 }
 
-const handleEditOk = () => {
+const handleEditOk = (e) => {
+  e.preventDefault()
   setEditModal(false)
+  router.push('/admin/products/')
+}
+const handleAddOk = (e) => {
+  e.preventDefault()
+  setAddModal(false)
   router.push('/admin/products/')
 }
 
@@ -386,7 +392,7 @@ const handleEditOk = () => {
                 </div>
                 <Modal isOpen={addModal} title={'ADD'} text={'¡PRODUCT ADDED SUCCESSFULY!'}>
                   <div className={styles.ok_button}> 
-                    <button onClick={() => {setAddModal(false); router.push('/admin/products/')}}>OK</button>
+                    <button onClick={(e) => handleAddOk(e)}>OK</button>
                   </div>
                 </Modal>
               </>
@@ -400,7 +406,7 @@ const handleEditOk = () => {
                 </div>
                 <Modal isOpen={editModal} title={'EDIT'} text={'¡PRODUCT EDITED SUCCESSFULY!'}>
                   <div className={styles.ok_button}> 
-                    <button onClick={handleEditOk}>
+                    <button onClick={(e) => handleEditOk(e)}>
                         OK
                     </button>
                   </div>
