@@ -87,6 +87,22 @@
   transition: all 0.5s ease;
 }
 
+.ok_button{
+  cursor: pointer;
+  width: 80px;
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 2px;
+  margin: 0px 24px;
+  border: solid 1px gray;
+  padding: 5px 10px;
+  transition: border 0.1s ease-in-out;
+}
+
+.ok_button:hover{
+  border: solid 1px white;
+}
+
 @media screen and (min-width: 768px) {
   .add_product_container{
     flex-direction: row;

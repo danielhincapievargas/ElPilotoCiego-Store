@@ -3,15 +3,18 @@ import Image from 'next/image'
 import styles from '@components/AdminProductDetail/adminProductDetail.module.css'
 import { stateProducts, listSingleProduct } from '@/redux/slices/productSlice'
 import { useSelector, useDispatch } from 'react-redux'
-
-
+import Modal from '@components/Modal'
+import { useRouter } from 'next/router'
 
 const AdminProductDetail = ({action}) => {
   const { product } = useSelector(stateProducts)
   const [image, setImage] = useState(null)
   const [file, setFile] = useState (null)
   const [type, setType] = useState('')
+  const router = useRouter()
   const dispatch = useDispatch()
+  const [editModal, setEditModal] = useState(false)
+  const [addModal, setAddModal] = useState(false)
 
   const urlUpdate = `http://localhost:8080/api/products/${product._id}`
   const urlAdd = "http://localhost:8080/api/products/"
@@ -99,9 +102,7 @@ const AdminProductDetail = ({action}) => {
       productSizes: currentSotck
     }
 
-
     dispatch(listSingleProduct(updatedProduct))
-
   };
 
   
@@ -114,8 +115,6 @@ const AdminProductDetail = ({action}) => {
       ...product,
       [name]: value,
     }
-
-    console.log(updatedProduct);
 
     dispatch(listSingleProduct(updatedProduct))
   }
@@ -134,14 +133,14 @@ const AdminProductDetail = ({action}) => {
     }
   }
   const fetchAddProduct = async (url, data) => {
-    console.log("Entré al fetchAdd");
+
     try {
       const response = await fetch(url, {
         method: 'POST',
         body: data, 
       });
       const res = await response.json();
-      console.log('res', res);
+
       return res
     } catch (error) {
       alert('Error en fetchImg', error)
@@ -179,14 +178,24 @@ const AdminProductDetail = ({action}) => {
 
     if(action === "edit"){
       await fetchUpdateProduct(urlUpdate, data)
-      return alert('editar producto')
+      setEditModal(true)
     }
 
     if(action ==="add"){
       await fetchAddProduct(urlAdd, data)
-      return alert('agregar producto')
+      setAddModal(true)
     }
+}
 
+const handleEditOk = (e) => {
+  e.preventDefault()
+  setEditModal(false)
+  router.push('/admin/products/')
+}
+const handleAddOk = (e) => {
+  e.preventDefault()
+  setAddModal(false)
+  router.push('/admin/products/')
 }
 
   return (
@@ -361,7 +370,7 @@ const AdminProductDetail = ({action}) => {
               <div className={styles.group}>
                 <label htmlFor="featured">FEATURED?</label>
                 <select 
-                  defaultValue={product ? product.productFeatured : false}
+                  //defaultValue={product ? product.productFeatured : false}
                   id="featured"
                   type="text"
                   placeholder=""
@@ -377,15 +386,32 @@ const AdminProductDetail = ({action}) => {
             </div>
 
             {action === 'add' && (
-              <div className={styles.add_product}>
-                <button onClick={(e) => handleSubmit(e, 'add')} className={styles.add_button}>ADD PRODUCT</button>
-              </div>
+              <>
+                <div className={styles.add_product}>
+                  <button onClick={(e) => handleSubmit(e, 'add')} className={styles.add_button}>ADD PRODUCT</button>
+                </div>
+                <Modal isOpen={addModal} title={'ADD'} text={'¡PRODUCT ADDED SUCCESSFULY!'}>
+                  <div className={styles.ok_button}> 
+                    <button onClick={(e) => handleAddOk(e)}>OK</button>
+                  </div>
+                </Modal>
+              </>
+              
             )}
 
             {action === 'edit' && 
-              <div className={styles.edit_product}>
-                <button onClick={(e) => handleSubmit(e, 'edit')} className={styles.edit_button}>SAVE CHANGES</button>
-              </div>
+              <>
+                <div className={styles.edit_product}>
+                  <button onClick={(e) => handleSubmit(e, 'edit')} className={styles.edit_button}>SAVE CHANGES</button>
+                </div>
+                <Modal isOpen={editModal} title={'EDIT'} text={'¡PRODUCT EDITED SUCCESSFULY!'}>
+                  <div className={styles.ok_button}> 
+                    <button onClick={(e) => handleEditOk(e)}>
+                        OK
+                    </button>
+                  </div>
+                </Modal>
+              </>
             }
           </div>
 
