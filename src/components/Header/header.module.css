@@ -49,6 +49,7 @@
 }
 
 .right_header {
+  position: relative;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -57,10 +58,16 @@
 }
 
 .right_header .cart_icon{
-  margin-right: 5px;
+  font-size: 36px;
   cursor: pointer;
-  min-width: 30px;
   transition: color 0.4s ease;
+}
+
+.cart_quantity{
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  font-size: 14px;
 }
 
 .right_header ul {
@@ -99,7 +106,12 @@
   z-index: 999;
 }
 
-
+.cart_quantity{
+  position: absolute;
+  top: 18px;
+  right: 63px;
+  font-size: 14px;
+}
 
 @media screen and (min-width: 500px) {
   .header{
@@ -179,6 +191,7 @@
 
   .right_header {
     justify-content: space-between;
+    align-items: flex-end;
   }
 
 
@@ -203,6 +216,12 @@
 
   .right_header .hamburger{
     display: none;
+  }
+
+  .cart_quantity{
+    top: 12px;
+    right: 14px;
+    font-size: 14px;
   }
 
 }

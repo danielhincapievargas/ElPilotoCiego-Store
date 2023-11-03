@@ -9,12 +9,15 @@ import Cookies from 'universal-cookie'
 import MobileMenu from '@components/MobileMenu'
 import MobileUserMenu from '@components/MobileUserMenu'
 import { getLoggedUser, stateUsers } from '@/redux/slices/usersSlice'
+import { cart } from '@/redux/slices/cartSlice'
 import { useDispatch, useSelector } from 'react-redux'
 
 const Header = () => {
   const [loggedCard, setLoggedCard] = useState(false)
   const [mobileMenu, setMobileMenu] = useState(false)
   const { loggedUser } = useSelector(stateUsers)
+  const currentCart = useSelector(cart)
+
   const dispatch = useDispatch()
   const router = useRouter()
   const cookies = new Cookies()
@@ -40,6 +43,8 @@ const Header = () => {
     }))
     router.push('/')
   }
+
+  console.log(currentCart.cart);
 
   return (
 
@@ -100,6 +105,7 @@ const Header = () => {
             <li>ABOUT</li>
           </ul>
           <HiOutlineShoppingBag onClick={() =>router.push('/cart')} className={styles.cart_icon} />
+          {(currentCart.cart.length > 0) && <div className={styles.cart_quantity}>{currentCart.cart.length}</div>}
           <div onClick={handleClick} className={styles.hamburger}>
             <Hamburger
               size={20}
