@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from '@components/DeliveryForm/deliveryForm.module.css'
+import { PhoneInput } from 'react-international-phone';
+import 'react-international-phone/style.css';
 import { useRouter } from 'next/router'
 import { changeDeliveryForm, form } from '@/redux/slices/formSlice'
 import { useDispatch, useSelector } from 'react-redux'
@@ -7,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux'
 const DeliveryForm = () => {
   const router = useRouter()
   const dispatch = useDispatch()
+  const [phone, setPhone] = useState('');
   const currentForm = useSelector(form)
   const {
     orderEmail,
@@ -21,7 +24,13 @@ const DeliveryForm = () => {
 
   const handleChange = (e) => {
     const {name, value} = e.target
-    dispatch(changeDeliveryForm({name, value}))
+    
+    dispatch(changeDeliveryForm({name,value}))
+
+    dispatch(changeDeliveryForm({
+      name: 'orderPhone',
+      value: phone
+    }))
   }
 
   return (
@@ -37,7 +46,7 @@ const DeliveryForm = () => {
           required
           name="orderEmail"
           value={orderEmail}
-          onChange={handleChange}
+          onChange={(e) => handleChange(e)}
         />
         <div className={styles.have_account}>Have an account? 
           <span onClick={() => router.push('/login')}>Login</span>
@@ -126,15 +135,34 @@ const DeliveryForm = () => {
       </div>
 
       <div className={styles.form_group}>
-        <label htmlFor="orderPhone">PHONE</label>
-        <input
-          id="orderPhone"
-          type="text"
-          placeholder=""
-          required
+      <label htmlFor="orderPhone">PHONE</label>
+        <PhoneInput
+          inputStyle={{
+            background: "transparent",
+            color: "white",
+            borderRadius: "0px",
+            height: "40px",
+            width: "100%",
+            fontSize: "18px",
+          }}
+          countrySelectorStyleProps={{
+            buttonStyle: {
+              background: "transparent",
+              borderRadius: "0px",
+              height: "40px",
+            },
+            dropdownStyleProps: {
+              style: {
+                background: "black",
+                color: "gray"
+              }
+            }
+          }}
           name="orderPhone"
-          value={orderPhone}
-          onChange={handleChange}
+          id="orderPhone"
+          defaultCountry="us"
+          value={phone}
+          onChange={(phone) => {setPhone(phone)}}
         />
       </div>
   </div>
