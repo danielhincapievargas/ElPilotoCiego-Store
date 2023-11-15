@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.6",
+    "@stripe/react-stripe-js": "^2.3.2",
+    "@stripe/stripe-js": "^2.1.11",
     "eslint": "8.49.0",
     "eslint-config-next": "13.4.19",
     "hamburger-react": "^2.5.0",
