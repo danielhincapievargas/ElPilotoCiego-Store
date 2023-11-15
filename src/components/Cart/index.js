@@ -95,7 +95,7 @@ const Cart = () => {
         <div className={styles.checkout}>
           <button 
             className={styles.checkout_button}
-            onClick={() => router.push('/checkout')}
+            onClick={() => router.push('/checkout/delivery_contact')}
           >Checkout</button>
         </div>
       </>

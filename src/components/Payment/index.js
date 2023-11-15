@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 const Payment = () => {
   const router = useRouter()
   return (
-    <div className={styles.payment_form}>
+    <form className={styles.payment_form}>
 
       <h2 className={styles.payment}>PAYMENT</h2>
 
@@ -34,7 +34,7 @@ const Payment = () => {
         <button onClick={() => router.push('/successful_payment')} className={styles.payment_button} type="submit">MAKE PAYMENT</button>
       </div>
 
-  </div>
+  </form>
   )
 }
 

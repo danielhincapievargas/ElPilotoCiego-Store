@@ -34,7 +34,7 @@ const DeliveryForm = () => {
   }
 
   return (
-    <div className={styles.delivery_form}>
+    <form className={styles.delivery_form}>
 
       <h2 className={styles.contact}>CONTACT</h2>
       <div className={styles.form_group}>
@@ -165,7 +165,10 @@ const DeliveryForm = () => {
           onChange={(phone) => {setPhone(phone)}}
         />
       </div>
-  </div>
+      <div className={styles.delivery_submit}>
+        <button onClick={() => router.push('/checkout/payment')} className={styles.delivery_button} type="submit">CONTINUE TO PAYMENT</button>
+      </div>
+  </form>
   )
 }
 
