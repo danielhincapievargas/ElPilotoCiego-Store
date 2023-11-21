@@ -64,3 +64,19 @@
   font-size: 20px;
   letter-spacing: 2px;
 }
+
+.delivery_submit{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+.delivery_button{
+  margin-top: 30px;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid white;
+  padding: 5px 80px;
+  font-size: 20px;
+  letter-spacing: 2px;
+}

@@ -1,9 +1,8 @@
 import React from 'react'
 import styles from '@components/Cart/Cart.module.css'
 import CartProduct from '@components/CartProduct'
-import { cart } from '@/redux/slices/cartSlice'
+import { cart, removeFromCart } from '@/redux/slices/cartSlice'
 import { useSelector, useDispatch } from 'react-redux'
-import { removeFromCart } from '@/redux/slices/cartSlice'
 import { useRouter } from 'next/router'
 import formatPrice from '@/services/formatPrice'
 
@@ -95,7 +94,7 @@ const Cart = () => {
         <div className={styles.checkout}>
           <button 
             className={styles.checkout_button}
-            onClick={() => router.push('/checkout')}
+            onClick={() => router.push('/checkout/delivery_contact')}
           >Checkout</button>
         </div>
       </>

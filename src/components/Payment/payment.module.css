@@ -36,6 +36,31 @@
   margin-bottom: 20px;
 }
 
+.card_name{
+  background-color: white;
+  color: black;
+}
+
+.stripe_number{
+  padding: 10px 5px;
+  width: 100%;
+  border: 1px solid white;
+  background-color: white;
+}
+
+.stripe_expiration {
+  padding: 10px 5px;
+  border: 1px solid white;
+  background-color: white;
+}
+
+.stripe_cvc {
+  padding: 10px 5px;
+  border: 1px solid white;
+  background-color: white;
+}
+
+
 .payment_submit{
   width: 100%;
   display: flex;
@@ -51,3 +76,14 @@
   font-size: 20px;
   letter-spacing: 2px;
 }
+
+/* .card_element{
+  background-color: white;
+  color: black;
+}
+
+.card_element_btn{
+  cursor: pointer;
+  color: black;
+  border: 1px solid black;
+} */

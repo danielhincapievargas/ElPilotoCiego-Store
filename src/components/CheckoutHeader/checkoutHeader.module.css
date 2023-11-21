@@ -42,3 +42,10 @@
 .header .cart_icon:hover{
   color: #e72076;
 }
+
+.header .cart_quantity{
+  position: absolute;
+  top: 68px;
+  right: calc(10% + 18px);
+  font-size: 14px;
+}
