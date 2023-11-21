@@ -3,12 +3,15 @@ import styles from '@components/CheckoutHeader/checkoutHeader.module.css'
 import Image from 'next/image'
 import { HiOutlineShoppingBag } from "react-icons/hi2"
 import { useRouter } from 'next/router'
+import { cart } from '@/redux/slices/cartSlice'
+import { useSelector } from 'react-redux'
 
 
 const CheckoutHeader = () => {
   const router = useRouter()
+  const currentCart = useSelector(cart)
   return (
-    <div className={styles.header_container}>
+  <div className={styles.header_container}>
     <div className={styles.header}>
 
         <Image
@@ -25,6 +28,7 @@ const CheckoutHeader = () => {
           className={styles.cart_icon}
           onClick={() => router.push('/cart')}
         />
+        {(currentCart.cart.length > 0) && <div className={styles.cart_quantity}>{currentCart.cart.length}</div>}
 
     </div>
   </div>

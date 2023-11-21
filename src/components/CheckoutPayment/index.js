@@ -8,7 +8,7 @@ import {loadStripe} from '@stripe/stripe-js';
 
 const stripePromise = loadStripe('pk_test_51OCnCQGUmwQ5svChuuMvZBPcFzYiPebwXMYWVd6at863IdmwVmMvCuwi5a4geVbRz1KXUXxrmVSP3hRCQqXTuBAm00E4I0gAg6');
 
-const CheckoutDelivery = () => {
+const CheckoutPayment = () => {
   return (
     <>
       <CheckoutHeader />
@@ -26,4 +26,4 @@ const CheckoutDelivery = () => {
   )
 }
 
-export default CheckoutDelivery
+export default CheckoutPayment
